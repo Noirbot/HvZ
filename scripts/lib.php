@@ -1,7 +1,7 @@
 <?php
 	session_start();
 	$local=false;
-    $current_game = "fall2012";
+    $current_game = "spring2013";
     $db_users = array(
     	"achievements" => "achieve",
         "spring2012" => "Spr12",
