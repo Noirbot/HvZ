@@ -5,12 +5,14 @@
     $db_users = array(
     	"achievements" => "achieve",
         "spring2012" => "Spr12",
-        "fall2012" => "Fall12"
+        "fall2012" => "Fall12",
+        "spring2013" => "Spr13"
     );
     $db_pass = array(
     	"achievements" => "legopibb",
         "spring2012" => "pandapool",
-        "fall2012" => "legopibb"
+        "fall2012" => "legopibb",
+        "spring2013" => "sextowel"
     );
 
     if($local){
@@ -33,19 +35,22 @@
     mysql_select_db($current_game);
 	
 	$oz_flush_dates = array(
-		"spring2012" => "28 February 2012",
-		"fall2012" => "18 September 2012"
+		"spring2012" => "27 February 2012 23:00",
+		"fall2012" => "17 September 2012 23:00",
+		"spring2013" => "4 March 2013 23:00"
 		);
 	$oz_flushed = false;
 
     $quiz_open_dates = array(
         "spring2012" => "28 February 2012",
-        "fall2012" => "10 September 2012"
+        "fall2012" => "10 September 2012",
+        "spring2013" => "25 February 2013"
     );
 
     $quiz_close_dates = array(
-        "spring2012" => "28 February 2012 5.00 pm",
-        "fall2012" => "17 September 2012 5.00 pm"
+        "spring2012" => "28 February 2012 17:00",
+        "fall2012" => "17 September 2012 17:00",
+        "spring2013" => "4 March 2013 17:00"
     );
 
 	if(!isset($_SESSION['sorted'])){
