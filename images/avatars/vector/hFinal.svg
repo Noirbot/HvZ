@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 14.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 43363)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="200px"
+	 height="200px" viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
+<filter  height="140%" width="140%" y="-20%" x="-20%" id="AI_BevelShadow_1">
+	<feGaussianBlur  in="SourceAlpha" result="blur" stdDeviation="4"></feGaussianBlur>
+	<feOffset  dx="4" dy="4" in="blur" result="offsetBlur"></feOffset>
+	
+		<feSpecularLighting  style="lighting-color:white" in="blur" result="specOut" surfaceScale="5" specularConstant="1" specularExponent="10">
+		<fePointLight  y="-10000" x="-5000" z="-20000"></fePointLight>
+	</feSpecularLighting>
+	<feComposite  in="specOut" in2="SourceAlpha" result="specOut" operator="in"></feComposite>
+	<feComposite  k4="0" k2="1" k3="1" k1="0" in="SourceGraphic" in2="specOut" result="litPaint" operator="arithmetic">
+		</feComposite>
+	<feMerge>
+		<feMergeNode  in="offsetBlur"></feMergeNode>
+		<feMergeNode  in="litPaint"></feMergeNode>
+	</feMerge>
+</filter>
+<g id="Layer_1">
+	<radialGradient id="SVGID_1_" cx="100.0122" cy="100.1523" r="96.0188" gradientUnits="userSpaceOnUse">
+		<stop  offset="0" style="stop-color:#FFFFFF"/>
+		<stop  offset="1" style="stop-color:#84A84D"/>
+	</radialGradient>
+	<path fill="url(#SVGID_1_)" stroke="#000000" stroke-width="5" d="M196.031,184.171c0,6.627-5.373,12-12,12H15.993
+		c-6.627,0-12-5.373-12-12V16.133c0-6.627,5.373-12,12-12h168.038c6.627,0,12,5.373,12,12V184.171z"/>
+</g>
+<g id="Layer_2">
+	<g id="layer1" transform="translate(-277.14275,-3.3922404)" filter="url(#AI_BevelShadow_1)">
+		<path fill="#3A53A4" stroke="#000000" stroke-width="4" d="M378.998,19.631l-14.649,16.262c5.135,7.363,7.054,16.217,7.054,20.665
+			c-4.361-7.692-9.154-9.913-13.872-13.095l-9.436,10.476c12.833,4.452,20.689,19.642,20.689,35.355
+			c0,7.595-2.62,25.666-20.689,24.879v-0.073c-13.329-1.578-25.847-17.066-26.975-33.973c-1.124-16.855,6.024-33.26,17.809-46.877
+			h-0.041c-21.55,12.82-36.504,35.68-38.49,62.289c-0.048,0.652-0.089,1.308-0.123,1.964c0,0.014,0,0.027,0,0.041
+			c-0.033,0.665-0.065,1.336-0.082,2.006c-0.018,0.681-0.024,1.368-0.024,2.054c0,43.513,35.315,78.829,78.829,78.829
+			c43.513,0,78.828-35.316,78.828-78.829c0-2.04-0.076-4.063-0.229-6.064c-1.985-26.609-16.939-49.468-38.49-62.289h-0.042
+			C430.852,46.867,438,63.271,436.876,80.127c-1.128,16.907-13.646,32.395-26.975,33.973v0.073
+			c-18.07,0.786-20.689-17.284-20.689-24.879c0-15.713,7.856-30.903,20.689-35.355l-9.437-10.476
+			c-4.718,3.182-9.511,5.402-13.872,13.095c0-4.448,1.918-13.302,7.054-20.665L378.998,19.631z"/>
+	</g>
+</g>
+</svg>

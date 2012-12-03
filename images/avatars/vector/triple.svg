@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 14.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 43363)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="200px"
+	 height="200px" viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
+<g id="Layer_1">
+	<radialGradient id="SVGID_1_" cx="100.0122" cy="100.1523" r="96.0188" gradientUnits="userSpaceOnUse">
+		<stop  offset="0" style="stop-color:#FFFFFF"/>
+		<stop  offset="1" style="stop-color:#923D29"/>
+	</radialGradient>
+	<path fill="url(#SVGID_1_)" stroke="#000000" stroke-width="5" d="M196.031,184.171c0,6.627-5.373,12-12,12H15.993
+		c-6.627,0-12-5.373-12-12V16.133c0-6.627,5.373-12,12-12h168.038c6.627,0,12,5.373,12,12V184.171z"/>
+</g>
+<g id="Layer_2">
+	<g>
+		<circle fill="#C49A6C" stroke="#000000" stroke-width="3" cx="56.908" cy="71.197" r="30.211"/>
+		<circle fill="#FFFFFF" stroke="#000000" stroke-width="3" cx="47.541" cy="59.02" r="5.386"/>
+		<circle fill="#FFFFFF" stroke="#000000" stroke-width="3" cx="66.979" cy="59.02" r="5.386"/>
+		<path fill="none" stroke="#000000" stroke-width="5" d="M70.492,91.636c0-8.112-6.075-14.677-13.583-14.677"/>
+		<path fill="none" stroke="#000000" stroke-width="5" d="M44.028,91.636c0-8.122,5.763-14.693,12.885-14.693"/>
+	</g>
+</g>
+<g id="Layer_2_copy">
+	<g>
+		<circle fill="#C49A6C" stroke="#000000" stroke-width="3" cx="100" cy="146.607" r="30.21"/>
+		<circle fill="#FFFFFF" stroke="#000000" stroke-width="3" cx="90.632" cy="134.43" r="5.386"/>
+		<circle fill="#FFFFFF" stroke="#000000" stroke-width="3" cx="110.071" cy="134.43" r="5.386"/>
+		<path fill="none" stroke="#000000" stroke-width="5" d="M113.583,167.046c0-8.112-6.075-14.678-13.584-14.678"/>
+		<path fill="none" stroke="#000000" stroke-width="5" d="M87.119,167.046c0-8.121,5.763-14.693,12.886-14.693"/>
+	</g>
+</g>
+<g id="Layer_2_copy_2">
+	<g>
+		<circle fill="#C49A6C" stroke="#000000" stroke-width="3" cx="143.794" cy="71.198" r="30.211"/>
+		<circle fill="#FFFFFF" stroke="#000000" stroke-width="3" cx="134.427" cy="59.02" r="5.387"/>
+		<circle fill="#FFFFFF" stroke="#000000" stroke-width="3" cx="153.864" cy="59.02" r="5.387"/>
+		<path fill="none" stroke="#000000" stroke-width="5" d="M157.377,91.636c0-8.112-6.075-14.677-13.583-14.677"/>
+		<path fill="none" stroke="#000000" stroke-width="5" d="M130.913,91.636c0-8.122,5.764-14.693,12.885-14.693"/>
+	</g>
+</g>
+</svg>
