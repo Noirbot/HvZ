@@ -42,7 +42,7 @@
 
         
 		<?php
-			if (quiz_open($current_game) || $faction == "ADMIN")
+			if (quiz_open($current_game) || $faction == "admin")
             {
                 echo ("<p>The rules document has been updated and a few changes have been made. Please take the following test to show you have read the new rules and understand them.</p>");
             }
@@ -56,7 +56,7 @@
       			}
 
 
-           if (quiz_open($current_game) || $gt_name == "pshuman3")
+           if (quiz_open($current_game) || $faction == "admin")
            {
                 echo ("<div id='rules_quiz'>");
                 echo ('<form action="rules_quiz_grader.php" method="post">');
