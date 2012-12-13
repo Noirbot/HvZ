@@ -10,7 +10,6 @@ require("../scripts/lib.php");
 $user_faction = strtolower($_SESSION["faction"]);
 
 $faction = isset($_GET['faction']) ? mysql_real_escape_string($_GET['faction']) : die("Invalid Faction");
-//$count = isset($_GET['count']) ? mysql_real_escape_string($_GET['count']) : "";
 
 if (strcasecmp($faction, "all") == 0 || strcasecmp($faction, $user_faction) == 0 || strcasecmp($user_faction, "admin") == 0)
 {
