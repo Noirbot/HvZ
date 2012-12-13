@@ -3,7 +3,11 @@
 	
 	if(!isset($_GET['id']) or $faction != 'admin')
 		header("Location: http://hvz.gatech.edu/profile");
-	$id = $_GET['id'];
+	
+	if (is_numeric($_GET['id']))
+		$id = $_GET['id'];
+	else
+		header("Location: http://www.youtube.com/watch?v=oHg5SJYRHA0");
 	
 	if( isset($_POST['id']) ){
 		$faction = $_POST['faction'];

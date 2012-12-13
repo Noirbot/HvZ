@@ -4,7 +4,7 @@ require("../scripts/lib.php");
 $poster_faction = strtoupper(verify($gt_name));
 
 $audience = isset($_GET['faction']) ? mysql_real_escape_string($_GET['faction']) : 0;
-$comment = isset($_GET['comment']) ? substr(mysql_real_escape_string($_GET['comment']),0,140) : 0;
+$comment = isset($_GET['comment']) ? mysql_real_escape_string($_GET['comment']) : 0;
 $comment = urldecode($comment);
 $comment = str_replace( array('<','>'), '', $comment);
 

@@ -2,7 +2,10 @@
 	require("../scripts/lib.php");
 	$faction = verify($gt_name);
 	
-	$id = $_GET['id'];
+	if (is_numeric($_GET['id']))
+		$id = $_GET['id'];
+	else
+		header("Location: http://www.youtube.com/watch?v=oHg5SJYRHA0");
 	
 	$quizzed = taken_quiz($gt_name);
 	if ($quizzed == False)

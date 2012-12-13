@@ -3,7 +3,11 @@ require("../scripts/lib.php");
 
 $faction = verify($gt_name);
 if($faction == "admin"){
-	$cid = isset($_GET['cid']) ? $_GET['cid'] : "";
+	if (isset($_GET['cid']) && is_numeric($_GET['cid']))
+		$cid = $_GET['cid'];
+	else
+		header("Location: http://www.youtube.com/watch?v=oHg5SJYRHA0");
+
 	if ($cid)
 		mysql_query("DELETE FROM twits WHERE `id`='$cid'");
 }
