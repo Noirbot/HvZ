@@ -304,13 +304,14 @@ function print_deathbar() {
 
 function print_killboard($faction, $sort_array, $sort_by){
 	global $oz_flushed, $current_game, $gt_name;
-	$oz_flushed = true/*is_oz_flushed($current_game)*/;
+	$oz_flushed = is_oz_flushed($current_game);
+	//$oz_flushed = false;
 	if($faction == "HUMAN"){
 		$name_sort = $sort_array['lname'];
 		if($oz_flushed)
-			$query = "SELECT * FROM users WHERE (faction='HUMAN' AND oz=0 AND fname != 'Feed' AND lname != 'Feed') AND rules_quiz = 1 ORDER BY lname $name_sort, fname $name_sort, id ASC";
+			$query = "SELECT * FROM users WHERE (faction='HUMAN' AND fname != 'Feed' AND lname != 'Feed') AND rules_quiz = 1 ORDER BY lname $name_sort, fname $name_sort, id ASC";
 		else
-			$query = "SELECT * FROM users WHERE (faction='HUMAN' OR oz=1) AND rules_quiz = 1 ORDER BY lname $name_sort, fname  $name_sort, id ASC";
+			$query = "SELECT * FROM users WHERE ((faction='HUMAN' OR oz=1) AND fname != 'Feed' AND lname != 'Feed') AND rules_quiz = 1 ORDER BY lname $name_sort, fname  $name_sort, id ASC";
 		$kb_res = mysql_query($query) or die(mysql_error());
 		while( $r = mysql_fetch_array($kb_res) ){
 			echo	"<div class='killboard_item'>\n";
