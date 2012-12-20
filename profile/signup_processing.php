@@ -24,7 +24,7 @@
 	$year = htmlspecialchars($year);
 	
 
-	if( !($fname & $lname ) ){
+	if( !($fname && $lname ) ){
 		//ERROR ERROR
 		//Go back, with errors mentioned
 	}
