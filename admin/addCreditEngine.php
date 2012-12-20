@@ -30,8 +30,8 @@
 			$line = fgets($fp);
 			$gtid = substr($line, 0, 9);
 			$query = "SELECT late_mission, early_mission, mission_count FROM users WHERE gtid = '$gtid'";
-			$res = mysql_query($query) or die(mysql_error());
-			$row = mysql_fetch_row($res);
+			$res = $db->query($query) or die(mysql_error());
+			$row = $res->fetch_row();
 			
 			if (!$row)
 			{
@@ -40,9 +40,9 @@
 			}
 
 			if (strcasecmp($row[0], "1") == 0)
-				mysql_query("UPDATE users SET mission_count = mission_count+1 WHERE gtid = '$gtid'");
+                $db->query("UPDATE users SET mission_count = mission_count+1 WHERE gtid = '$gtid'");
 			else
-				mysql_query("UPDATE users SET late_mission = 1 WHERE gtid = '$gtid'");
+                $db->query("UPDATE users SET late_mission = 1 WHERE gtid = '$gtid'");
 		}
 
 		$fail = urlencode($fail);

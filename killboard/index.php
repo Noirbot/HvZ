@@ -82,8 +82,8 @@
 					<input type="button" value="Name"  onclick="document.sort_form.HSort.value='lname'; document.sort_form.submit()" />
 			</div><br>
 			<?php
-				$res = mysql_query("SELECT * FROM users WHERE faction='HUMAN' AND rules_quiz = 1 AND fname != 'Feed' AND lname != 'Feed'");
-				$r = mysql_num_rows($res);
+				$res = $db->query("SELECT * FROM users WHERE faction='HUMAN' AND rules_quiz = 1 AND fname != 'Feed' AND lname != 'Feed'");
+				$r = $res->num_rows;
 			?>
 			<h2>Humans (<?php echo $r ?>)</h2>
 				<?php print_killboard("HUMAN", $_SESSION['Hsort'], "lname"); ?>
@@ -98,8 +98,8 @@
 			</div><br>
 
 			<?php
-				$res = mysql_query("SELECT * FROM users WHERE faction='ZOMBIE'AND fname != 'Feed' AND lname != 'Feed'");
-				$r = mysql_num_rows($res);
+				$res = $db->query("SELECT * FROM users WHERE faction='ZOMBIE'AND fname != 'Feed' AND lname != 'Feed'");
+				$r = $res->num_rows;
 			?>
 			<h2>Zombies (<?php echo $r ?>)</h2>
 				<?php print_killboard("ZOMBIE", $_SESSION['Zsort'], $sort_by); ?>

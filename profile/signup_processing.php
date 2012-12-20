@@ -9,12 +9,12 @@
 			header( "Location: http://hvz.gatech.edu/profile/signup.php" );
 			die();}
 	}
-	$fname = mysql_real_escape_string($_POST['fname']);
-	$lname = mysql_real_escape_string($_POST['lname']);
-	$slogan= mysql_real_escape_string($_POST['slogan']);
-	$gender= mysql_real_escape_string($_POST['gender']);
-	$major = mysql_real_escape_string($_POST['major']);
-	$year = mysql_real_escape_string($_POST['year']);
+	$fname = $db->escape_string($_POST['fname']);
+	$lname = $db->escape_string($_POST['lname']);
+	$slogan= $db->escape_string($_POST['slogan']);
+	$gender= $db->escape_string($_POST['gender']);
+	$major = $db->escape_string($_POST['major']);
+	$year  = $db->escape_string($_POST['year']);
 
 	$fname = htmlspecialchars($fname);
 	$lname = htmlspecialchars($lname);
@@ -31,7 +31,7 @@
 	
 	else{
 		$query = "UPDATE `users` SET fname='$fname', lname='$lname', faction='INACTIVE', slogan='$slogan', gender='$gender', major='$major', year='$year',signed_up='1' WHERE gt_name='$gt_name'";
-		mysql_query($query) or die("UPDATE query fail");
+        $db->query($query) or die("UPDATE query fail");
 		
 		if($local){
 			header( "Location: http://localhost/profile/" );

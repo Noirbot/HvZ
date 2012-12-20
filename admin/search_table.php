@@ -128,8 +128,8 @@
 	    	<h2>Players Table - 
 	    		<?php
 	    			$query = "SELECT SUM(CASE `faction` WHEN 'DEAD' THEN 1 ELSE 0 END) AS `dead`, SUM(CASE `faction` WHEN 'BANNED' THEN 1 ELSE 0 END) AS `banned`, SUM(CASE `faction` WHEN 'ADMIN' THEN 1 ELSE 0 END) AS `admin`, SUM(CASE `faction` WHEN 'HUMAN' THEN 1 ELSE 0 END) AS `human`, SUM(CASE `faction` WHEN 'ZOMBIE' THEN 1 ELSE 0 END) AS `zombie`, SUM(CASE `faction` WHEN 'INACTIVE' THEN 1 ELSE 0 END) AS `inactive` FROM `users`";
-	    			$result = mysql_query($query);
-	    			$r2 = mysql_fetch_array($result);
+	    			$result = $db->query($query);
+	    			$r2 = $result->fetch_assoc();
 	    			$total = $r2['dead'] + $r2['zombie'] + $r2['human'];
 	    			echo($total);
 	    		?>
@@ -149,7 +149,7 @@
                             Last Name <input type='text' name='lname' id='lname' onkeyup="set_visible()"/>
 		        </form>
 		        <form action='admin.php' method='post'>
-			        <?php $res = mysql_query("SELECT * FROM users ORDER BY `faction` DESC, `early_mission` DESC, `late_mission` DESC, lname ASC, fname ASC"); ?>
+			        <?php $res = $db->query("SELECT * FROM users ORDER BY `faction` DESC, `early_mission` DESC, `late_mission` DESC, lname ASC, fname ASC"); ?>
 			        <table border='1' style="padding:0; margin:0;" id="users">
 						<tr>
                             <td><strong>F Name</strong></td>
@@ -167,7 +167,7 @@
 			            </tr>
 			             
 						 <?php
-						 while($r = mysql_fetch_array($res)){
+						 while($r = $res->fetch_assoc()){
 							 $id=$r['id'];
 							 $emission_check = ($r['early_mission']) ? "checked='checked'" : '';
 							 $lmission_check = ($r['late_mission']) ? "checked='checked'" : '';

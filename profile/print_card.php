@@ -14,8 +14,8 @@
 		else
 			$gt_name = $_ENV["REMOTE_USER"];
 		
-		$res = mysql_query("SELECT * FROM `users` WHERE `gt_name`='$gt_name'") or die("User Query Fail");
-		$r = mysql_fetch_assoc($res);
+		$res = $db->query("SELECT * FROM `users` WHERE `gt_name`='$gt_name'") or die("User Query Fail");
+		$r = $res->fetch_assoc();
 	?><br />
 
 	<div id='player_card' style="margin-left:20px;">

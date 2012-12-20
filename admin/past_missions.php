@@ -55,8 +55,8 @@
 			<div class='mission'>
 				<h2>Missions</h2>
 				<?php
-				$res = mysql_query("SELECT * FROM `missions` WHERE 1 ORDER BY `start_datetime` DESC") or die("Query Fail");
-				while($r = mysql_fetch_array($res)){
+				$res = $db->query("SELECT * FROM `missions` WHERE 1 ORDER BY `start_datetime` DESC") or die("Query Fail");
+				while($r = $res->fetch_assoc()){
 					
 					$start = date('D H:i', strtotime($r['start_datetime']));
 					$end_time =   date('D H:i', strtotime($r['end_datetime']));

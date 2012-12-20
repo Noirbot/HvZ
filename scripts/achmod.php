@@ -16,12 +16,12 @@
 			
 			if ($_GET['mode'] == "add")
 			{
-				mysqli_query($ach_db, $add_query);
+				$ach_db->query($add_query);
 				
 			}
 			else
 			{
-				mysqli_query($ach_db, $rem_query);
+				$ach_db->query($rem_query);
 			}
 		}
 	}

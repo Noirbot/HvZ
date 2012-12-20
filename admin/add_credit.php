@@ -14,5 +14,5 @@
 	
 	$query = "UPDATE users SET mission_count=mission_count+1 WHERE id=$id";
 
-	mysql_query($query);
+    $db->query($query);
 ?>

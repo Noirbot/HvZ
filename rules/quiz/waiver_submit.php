@@ -33,7 +33,7 @@
 
 
     $query = "UPDATE `users` SET `faction`='human', `rules_quiz`='1', `player_code`='$player_code', `gtid`='$gtid' WHERE `gt_name`='$gt_name'";
-    mysql_query($query) or die("RULES UPDATE query fail");
+    $db->query($query) or die("RULES UPDATE query fail");
 
     if($local){
         header( "Location: http://localhost/profile/" );

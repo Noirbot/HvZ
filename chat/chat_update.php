@@ -9,13 +9,13 @@ require("../scripts/lib.php");
 
 $user_faction = strtolower($_SESSION["faction"]);
 
-$faction = isset($_GET['faction']) ? mysql_real_escape_string($_GET['faction']) : die("Invalid Faction");
+$faction = isset($_GET['faction']) ? $db->escape_string($_GET['faction']) : die("Invalid Faction");
 
 if (strcasecmp($faction, "all") == 0 || strcasecmp($faction, $user_faction) == 0 || strcasecmp($user_faction, "admin") == 0)
 {
-		$res = mysql_query("SELECT twits.id AS tid, users.id AS uid, fname, lname, timestamp, faction, comment FROM `twits` JOIN (`users`) ON (twits.user=users.gt_name) WHERE audience='$faction' ORDER BY twits.id");
+		$res = $db->query("SELECT twits.id AS tid, users.id AS uid, fname, lname, timestamp, faction, comment FROM `twits` JOIN (`users`) ON (twits.user=users.gt_name) WHERE audience='$faction' ORDER BY twits.id");
 	
-		while( $r = mysql_fetch_array($res)){
+		while( $r = $res->fetch_assoc()){
 			$id=$r['tid'];
 			$uid=$r['uid'];
 			$time = date('D H:i', strtotime($r['timestamp']));

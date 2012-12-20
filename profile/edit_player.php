@@ -11,7 +11,7 @@
 	
 	if( isset($_POST['id']) ){
 		$faction = $_POST['faction'];
-		$slogan = mysql_escape_string($_POST['slogan']);
+		$slogan = $db->escape_string($_POST['slogan']);
 		$signed_up = isset($_POST['signed_up'])?1:0;
 		$rules_quiz = isset($_POST['rules_quiz'])?1:0;
 		$starve_time = $_POST['starve_time'];
@@ -20,7 +20,7 @@
 			$query = "UPDATE users SET slogan='$slogan', signed_up='$signed_up', rules_quiz='$rules_quiz', starve_time='$starve_time' WHERE id='$id'";
 		else
 			$query = "UPDATE users SET faction='$faction', slogan='$slogan', signed_up='$signed_up', rules_quiz='$rules_quiz', starve_time='$starve_time' WHERE id='$id'";
-		mysql_query($query) or die(mysql_error());
+        $db->query($query) or die($db->error());
 	}
 	
 	
@@ -120,10 +120,10 @@
 		<div id="profile">
 			
 			<?php
-				$res = mysql_query("SELECT * FROM `users` WHERE `id`='$id'") or die("User Query Fail");
-				$r = mysql_fetch_assoc($res);
+				$res = $db->query("SELECT * FROM `users` WHERE `id`='$id'") or die("User Query Fail");
+				$r = $res->fetch_assoc();
 			
-				if( mysql_num_rows($res) < 1 ) die("<h2>Invalid Player</h2>");
+				if( $res->num_rows < 1 ) die("<h2>Invalid Player</h2>");
 			
 			?>
 

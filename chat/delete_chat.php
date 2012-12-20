@@ -9,7 +9,7 @@ if($faction == "admin"){
 		header("Location: http://www.youtube.com/watch?v=oHg5SJYRHA0");
 
 	if ($cid)
-		mysql_query("DELETE FROM twits WHERE `id`='$cid'");
+        $db->query("DELETE FROM twits WHERE `id`='$cid'");
 }
 $_SESSION['hide']=0;
 ?>

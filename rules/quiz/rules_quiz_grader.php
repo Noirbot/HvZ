@@ -13,11 +13,11 @@
     /*if (!quiz_open($current_game) && $gt_name != "pshuman3")
         die("Sorry, signups have closed for the current game");*/
 
-	$questions = mysql_query("SELECT * FROM `rules_quiz_questions`");
+	$questions = $db->query("SELECT * FROM `rules_quiz_questions`");
 	$_SESSION["wrong"] = array();
 	$_SESSION['rules_error'] = false;
 	
-	while($r = mysql_fetch_array($questions)){
+	while($r =$questions->fetch_assoc()){
 			$qid = 'q'.$r['id'];
 			
 			$correct_aid = $r['answer_id'];

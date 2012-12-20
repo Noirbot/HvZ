@@ -81,8 +81,8 @@
             <div id="profile">
 
                 <?php
-                    $res = mysql_query("SELECT * FROM `users` WHERE `gt_name`='$gt_name'") or die("User Query Fail");
-                    $r = mysql_fetch_assoc($res);
+                    $res = $db->query("SELECT * FROM `users` WHERE `gt_name`='$gt_name'") or die("User Query Fail");
+                    $r = $res->fetch_assoc();
                     $other_gt_name = $r['gt_name'];
                 ?>
 
@@ -118,7 +118,7 @@
 							
 							$query = "SELECT `adata`.`id` AS `id`, `adata`.`name` AS `name`, `adata`.`avatar` as avatar FROM `ach_data` AS `adata` RIGHT OUTER JOIN (SELECT * FROM `ach_gets` WHERE `user` = '$gt_name') AS `agets` ON `adata`.`id` = `agets`.`ach_id` ORDER BY `adata`.`category`, `adata`.`id`";
 							
-							$result = mysqli_query($ach_db, $query);
+							$result = $ach_db->query($query);
 														
 							while ($row = $result->fetch_object())
 							{
@@ -191,10 +191,10 @@
                 <?php }
                 else if($r["faction"] == "ZOMBIE"){
                     $id=$r['id'];
-                    $kills_res = mysql_query("SELECT * FROM kills WHERE killer='$id'");
-                    $killer_res = mysql_query("SELECT * FROM kills JOIN users ON (kills.killer = users.gt_name) WHERE victim='$other_gt_name'");
-                    $kills = mysql_num_rows($kills_res);
-                    $k = mysql_fetch_array($killer_res);
+                    $kills_res = $db->query("SELECT * FROM kills WHERE killer='$id'");
+                    $killer_res = $db->query("SELECT * FROM kills JOIN users ON (kills.killer = users.gt_name) WHERE victim='$other_gt_name'");
+                    $kills = $kills_res->num_rows;
+                    $k = $killer_res->fetch_assoc();
                     $killer = $k['fname']." ".$k['lname'];
 
                     $day = date("l", strtotime($k['time']));

@@ -23,16 +23,19 @@
     $gt_name = $_ENV["REMOTE_USER"];
     $_SESSION["gtname"] = $gt_name;
 
-    $db = mysql_connect("web-db1.gatech.edu:3306",$db_users[$current_game],$db_pass[$current_game]) or die("DBC Remote Fail");
-
+    //$db = mysql_connect("web-db1.gatech.edu:3306",$db_users[$current_game],$db_pass[$current_game]) or die("DBC Remote Fail");
+    $db = new mysqli("web-db1.gatech.edu",$db_users[$current_game],$db_pass[$current_game],$current_game,3306);
+    if ($db->errno()) {
+        die('Connect Error (' . $db->errno . ') ' . $db->error);
+    }
 
     $ach_db = new mysqli("web-db1.gatech.edu",$db_users["achievements"],$db_pass["achievements"],"achievements",3306);
     if (mysqli_connect_errno()) {
-        die('Connect Error (' . mysqli_connect_errno() . ') ' . mysqli_connect_error());
+        die('Connect Error (' . $db->errno . ') ' . $db->error);
     }
 
 
-    mysql_select_db($current_game);
+    //mysql_select_db($current_game);
 	
 	$oz_flush_dates = array(
 		"spring2012" => "27 February 2012 23:00",
@@ -61,15 +64,18 @@
 
 
 function verify($gt_name){
-	global $local;
-	//mysql_select_db("hvz",$db);
-	//$gt_name="bananapants";
-	$res = mysql_query("SELECT * FROM `users` where `gt_name`='$gt_name'") or die("Verify Query Fail");
+	global $db;
+
+	// $res = mysql_query("SELECT * FROM `users` where `gt_name`='$gt_name'") or die("Verify Query Fail");
+	$res = $db->query("SELECT * FROM `users` where `gt_name`='$gt_name'") or die("Verify Query Fail");
 	
-	if(mysql_num_rows($res) == 0)
-		$ins = mysql_query("INSERT INTO `users` (gt_name) VALUES ('$gt_name')") or die("Addition Query Fail");
+	if(mysql_num_rows($res) == 0) {
+		// $ins = mysql_query("INSERT INTO `users` (gt_name) VALUES ('$gt_name')") or die("Addition Query Fail");
+		$db->query("INSERT INTO `users` (gt_name) VALUES ('$gt_name')") or die("Addition Query Fail");
+	}
 	
-	$r = mysql_fetch_assoc($res);
+	// $r = mysql_fetch_assoc($res);
+	$r = $res->fetch_assoc();
 
 	if($r["signed_up"]){
 		if($r['faction'])
@@ -92,16 +98,23 @@ function verify($gt_name){
 function first_time($gt_name){
 	global $db;
 
-	$res= mysql_query("SELECT signed_up FROM `users` where `gt_name`='$gt_name'", $db) or die("Query Fail");
-	$r = mysql_fetch_array($res);
+	//$res= mysql_query("SELECT signed_up FROM `users` where `gt_name`='$gt_name'", $db) or die("Query Fail");
+	$res = $db->query("SELECT signed_up FROM `users` where `gt_name`='$gt_name'") or die("Query Fail");
+
+	//$r = mysql_fetch_array($res);
+	$r = $res->fetch_assoc();
 	return $r['signed_up']=='0' ? True : False;
 }
 
 function taken_quiz($gt_name) {
 	global $db;
 	
-	$res= mysql_query("SELECT rules_quiz FROM `users` where `gt_name`='$gt_name'", $db) or die("Query Fail");
-	$r = mysql_fetch_array($res);
+	//$res = mysql_query("SELECT rules_quiz FROM `users` where `gt_name`='$gt_name'", $db) or die("Query Fail");
+	$res = $db->query("SELECT rules_quiz FROM `users` where `gt_name`='$gt_name'") or die("Query Fail");
+
+	// $r = mysql_fetch_array($res);
+	$r = $res->fetch_assoc();
+
 	return $r['rules_quiz']=='1' ? True : False;
 }
 
@@ -121,13 +134,16 @@ function printSideBar(){
 
 
 function beta_print_chat($show_del, $chat_faction, $count){
-	
+	global $db;
+
 	if ($count != "")
-		$res = mysql_query("SELECT * FROM (SELECT twits.id AS tid, users.id AS uid, fname, lname, oz, timestamp, faction, comment FROM `twits` JOIN (`users`) ON (twits.user=users.gt_name) WHERE audience='$chat_faction' ORDER BY twits.id DESC $count) AS `chats` ORDER BY tid");
+		$cmd = "SELECT * FROM (SELECT twits.id AS tid, users.id AS uid, fname, lname, oz, timestamp, faction, comment FROM `twits` JOIN (`users`) ON (twits.user=users.gt_name) WHERE audience='$chat_faction' ORDER BY twits.id DESC $count) AS `chats` ORDER BY tid";
 	else
-		$res = mysql_query("SELECT twits.id AS tid, users.id AS uid, fname, lname, oz, timestamp, faction, comment FROM `twits` JOIN (`users`) ON (twits.user=users.gt_name) WHERE audience='$chat_faction' ORDER BY twits.id");
+		$cmd = "SELECT twits.id AS tid, users.id AS uid, fname, lname, oz, timestamp, faction, comment FROM `twits` JOIN (`users`) ON (twits.user=users.gt_name) WHERE audience='$chat_faction' ORDER BY twits.id";
 	
-	while( $r = mysql_fetch_array($res)){
+	$res = $db->query($cmd);
+
+	while( $r = $res->fetch_assoc()){
 		$id=$r['tid'];
 		$uid=$r['uid'];
 		$time = date('D H:i', strtotime($r['timestamp']));
@@ -171,17 +187,20 @@ function print_chat($user_faction,$chat_faction, $count){
 }
 
 function print_missions($faction){
-	
-	$res = mysql_query("SELECT * FROM `missions` WHERE (`faction`='$faction' OR `faction`='ALL' )AND `release_datetime` < NOW() ORDER BY `start_datetime` DESC") or die("Query Fail");
-	while($r = mysql_fetch_array($res)){
+	global $db;
+
+	// $res = mysql_query("SELECT * FROM `missions` WHERE (`faction`='$faction' OR `faction`='ALL' )AND `release_datetime` < NOW() ORDER BY `start_datetime` DESC") or die("Query Fail");
+	$res = $db->query("SELECT * FROM `missions` WHERE (`faction`='$faction' OR `faction`='ALL' )AND `release_datetime` < NOW() ORDER BY `start_datetime` DESC") or die("Query Fail");
+
+	while($r = $res->fetch_assoc()){
 		
 		$start = date('D H:i', strtotime($r['start_datetime']));
 		$end =   date('D H:i', strtotime($r['end_datetime']));
 		
-		//echo $start." ".$end;
 		echo	"\n<div id='mission".$r['id']."' class='mission'>\n".
 					"\t<h3>".$r['name']."</h3>\n".
 					"\t\t<p class='mission_particulars'>\n".
+		//echo $start." ".$end;
 						"\t\t\t<strong>Start:</strong> $start <br>\n".
 						"\t\t\t<strong>End</strong>: $end <br>\n".
 						"\t\t\t<strong>Location:</strong> ".$r['location']."<br>\n".
@@ -195,16 +214,21 @@ function print_missions($faction){
 }
 
 function print_quiz(){
-	$rules_res = mysql_query("SELECT * FROM `rules_quiz_questions`");
+    global $db;
+
+	// $rules_res = mysql_query("SELECT * FROM `rules_quiz_questions`");
+	$rules_res = $db->query("SELECT * FROM `rules_quiz_questions`");
+
 	$i=0;
-	while( $qr = mysql_fetch_array($rules_res) ){
-		$ans_res   = mysql_query("SELECT * FROM `rules_quiz_answers` WHERE `question_id` ='".$qr['id']."'");
+	while( $qr = $rules_res->fetch_assoc()){
+		// $ans_res = mysql_query("SELECT * FROM `rules_quiz_answers` WHERE `question_id` ='".$qr['id']."'");
+		$ans_res = $db->query("SELECT * FROM `rules_quiz_answers` WHERE `question_id` ='".$qr['id']."'");
 		echo "\n<p class='question";
 		if (isset($_SESSION["wrong"]) && in_array($qr['id'], $_SESSION["wrong"]))
 			echo " wrong";
 		echo "'>".++$i.".  ".$qr["question"]."</p>";
 
-			while( $ar = mysql_fetch_array($ans_res) ){
+			while( $ar = $ans_res->fetch_assoc()){
 				echo "\n\t\t<input type='radio' name='q".$qr["id"]."' value='".$ar['id']."'>  ".$ar['answer']."</input><br />";
 
 			}
@@ -213,18 +237,19 @@ function print_quiz(){
 }
 
 function print_deathbar() {
-	global $oz_flushed, $current_game, $gt_name;
+	global $oz_flushed, $current_game, $db;
+    $ozs[] = array();
 	$oz_flushed = is_oz_flushed($current_game);
 	
 	if($oz_flushed){
-		$query = "SELECT k_u.fname, k_u.lname, v_u.fname, v_u.lname, v_u.starve_time, v_u.kills, v_u.slogan, k.time, v_u.gt_name, k_u.gt_name
+		$query = "SELECT k_u.fname, k_u.lname, v_u.fname, v_u.lname, k.time, k_u.gt_name
 			FROM kills k
 			JOIN users k_u ON k.killer = k_u.gt_name
 			JOIN users v_u ON k.victim = v_u.gt_name 
 			ORDER BY k.time DESC
 			LIMIT 5";
 	} else {
-		$query = "SELECT k_u.fname, k_u.lname, v_u.fname, v_u.lname, v_u.starve_time, v_u.kills, v_u.slogan, k.time, v_u.gt_name, k_u.gt_name
+		$query = "SELECT k_u.fname, k_u.lname, v_u.fname, v_u.lname, k.time, k_u.gt_name
 			FROM kills AS k
 			JOIN users AS k_u ON k.killer = k_u.gt_name
 			JOIN users AS v_u ON k.victim = v_u.gt_name 
@@ -233,14 +258,14 @@ function print_deathbar() {
 			LIMIT 5";
 	}
 	
-	$db_res = mysql_query($query) or die(mysql_error());
+	$db_res = $db->query($query) or die($db->error);
 	
 	if (!$oz_flushed)
 	{
 		$index = 0;
 		$query = "SELECT gt_name FROM users WHERE oz=1";
-		$oz_res = mysql_query($query) or die(mysql_error());
-		while ($one_oz = mysql_fetch_array($oz_res))
+		$oz_res = $db->query($query) or die($db->error);
+		while ($one_oz = $oz_res->fetch_assoc())
 		{
 			$ozs[$index] = $one_oz[0];
 			$index++;
@@ -249,7 +274,7 @@ function print_deathbar() {
 	
 	echo ('<h2 style="padding-left:5px;">Fresh Kills</h2>');
 	
-	while( $r = mysql_fetch_array($db_res) ){
+	while($r = $db_res->fetch_assoc()){
 		/* MySQL or PHP fails.  If doesn't allow you to rename the keys in the associative array.
 		 *   actually, i realized i just need to say k_u.fname kfname, etc. but this is low on the prio list
 		 *  So as a key:
@@ -265,9 +290,9 @@ function print_deathbar() {
 		 * 9 = killer gt_name
 		 */
 		echo	"<div class='deathbar_item'>\n".
-				"\t<h1>".$r[2]." ".$r[3]."</h1>\n";
+				"\t<h1>".$r["v_u.fname"]." ".$r["v_u.lname"]."</h1>\n";
 				
-				$time = date('D H:i', strtotime($r[7]));
+				$time = date('D H:i', strtotime($r["k.time"]));
 				echo "<p style='margin:0; padding:0; padding-left:5px; line-height:12px; font-size:12px;'>";
 				echo "&nbsp;&nbsp;&nbsp;<strong>Killed by:</strong> ";
 				if (!$oz_flushed)
@@ -275,7 +300,7 @@ function print_deathbar() {
 					$killed_by_oz = false;
 						foreach($ozs as $oz_id)
 					{
-						if ($r[9] == $oz_id)
+						if ($r["k_u.gt_name"] == $oz_id)
 						{
 							$killed_by_oz = true;
 						}
@@ -287,12 +312,12 @@ function print_deathbar() {
 					}
 					else
 					{
-						echo $r[0] . " " . $r[1];
+						echo $r["k_u.fname"] . " " . $r["k_u.lname"];
 					}
 				}
 				else
 				{
-					echo $r[0] . " " . $r[1];
+					echo $r["k_u.fname"] . " " . $r["k_u.lname"];
 				}
 				echo "<br>&nbsp;&nbsp;&nbsp;<strong>On</strong> $time<br>";
 				echo "</p>";
@@ -303,17 +328,17 @@ function print_deathbar() {
 
 
 function print_killboard($faction, $sort_array, $sort_by){
-	global $oz_flushed, $current_game, $gt_name;
+	global $oz_flushed, $current_game, $gt_name, $db;
 	$oz_flushed = is_oz_flushed($current_game);
-	//$oz_flushed = false;
+
 	if($faction == "HUMAN"){
 		$name_sort = $sort_array['lname'];
 		if($oz_flushed)
 			$query = "SELECT * FROM users WHERE (faction='HUMAN' AND fname != 'Feed' AND lname != 'Feed') AND rules_quiz = 1 ORDER BY lname $name_sort, fname $name_sort, id ASC";
 		else
 			$query = "SELECT * FROM users WHERE ((faction='HUMAN' OR oz=1) AND fname != 'Feed' AND lname != 'Feed') AND rules_quiz = 1 ORDER BY lname $name_sort, fname  $name_sort, id ASC";
-		$kb_res = mysql_query($query) or die(mysql_error());
-		while( $r = mysql_fetch_array($kb_res) ){
+		$kb_res = $db->query($query) or die($db->error);
+		while( $r = $kb_res->fetch_assoc()){
 			echo	"<div class='killboard_item'>\n";
 				
 			if ($r["avatar"] != "")
@@ -335,6 +360,7 @@ function print_killboard($faction, $sort_array, $sort_by){
 		}	
 	}
 	else if($faction == "ZOMBIE"){
+        $ozs = array();
 		$name_sort = $sort_array['lname'];
 		$kill_sort = $sort_array['kills'];
 		$starve_sort = $sort_array['starve_time'];
@@ -347,7 +373,6 @@ function print_killboard($faction, $sort_array, $sort_by){
 			$sort_string ="v_u.starve_time $starve_sort, v_u.kills $kill_sort, v_u.lname $name_sort, v_u.fname $name_sort ";
 		else
 			$sort_string ="v_u.kills $kill_sort, v_u.starve_time $starve_sort, v_u.lname $name_sort, v_u.fname $name_sort ";
-			//$sort_string ="v_u.lname $name_sort, v_u.fname $name_sort, v_u.kills $kill_sort, v_u.starve_time $starve_sort ";
 
 		if($oz_flushed){
 			$query = "SELECT k_u.fname, k_u.lname, v_u.fname, v_u.lname, v_u.starve_time, v_u.kills, v_u.slogan, k.time, v_u.gt_name, k_u.gt_name, v_u.id, k_u.id, v_u.avatar
@@ -364,57 +389,55 @@ function print_killboard($faction, $sort_array, $sort_by){
 				WHERE v_u.oz = 0 AND v_u.fname != 'Feed' AND v_u.lname != 'Feed' 
 				ORDER BY $sort_string";
 		}
-		
-		
 
-		$kb_res = mysql_query($query) or die(mysql_error());
+		$kb_res = $db->query($query) or die($db->error);
 		if (!$oz_flushed)
 		{
 			$index = 0;
 			$query = "SELECT gt_name FROM users WHERE oz=1";
-			$oz_res = mysql_query($query) or die(mysql_error());
-			while ($one_oz = mysql_fetch_array($oz_res))
+			$oz_res = $db->query($query) or die($db->error);
+			while ($one_oz = $oz_res->fetch_assoc())
 			{
 				$ozs[$index] = $one_oz[0];
 				$index++;
 			}
 		}
 		
-		while( $r = mysql_fetch_array($kb_res) ){
+		while( $r = $kb_res->fetch_assoc()){
 			/* MySQL or PHP fails.  If doesn't allow you to rename the keys in the associative array.
 			 *   actually, i realized i just need to say k_u.fname kfname, etc. but this is low on the prio list
 			 *  So as a key:
-			 * 0 = killer fname
-			 * 1 = killer lname
-			 * 2 = victim fname
-			 * 3 = victim lname
-			 * 4 = victim starve time
-			 * 5 = victim kills
-			 * 6 = victim slogan
-			 * 7 = victim time of zombification
-			 * 8 = victim gt_name
-			 * 9 = killer gt_name
-			 * 10 = victim id
-			 * 11 = killer id
-			 * 12 = victim avatar
+			 * 0 = killer fname k_u.fname
+			 * 1 = killer lname k_u.lname
+			 * 2 = victim fname v_u.fname
+			 * 3 = victim lname v_u.lname
+			 * 4 = victim starve time v_u.starve_time
+			 * 5 = victim kills v_u.kills
+			 * 6 = victim slogan v_u.slogan
+			 * 7 = victim time of zombification k.time
+			 * 8 = victim gt_name v_u.gt_name
+			 * 9 = killer gt_name k_u.gt_name
+			 * 10 = victim id v_u.id
+			 * 11 = killer id k_u.id
+			 * 12 = victim avatar v_u.avatar
 			 */
 			echo	"<div class='zombie_killboard_item'>\n";
 				
-			if ($r[12] != "")
+			if ($r["v_u.avatar"] != "")
 			{
-				echo ("\t<img src='../images/avatars/" . $r['avatar'] . "' width='50' />\n");
+				echo ("\t<img src='../images/avatars/" . $r['v_u.avatar'] . "' width='50' />\n");
 			}
 			else
 			{
 				echo ("\t<img src='../images/avatars/tiny_zombie.png' width='50' />\n");
 			}
 					
-			echo	"\t<a class='kill_name' href='../profile/view_profile.php?id=" . $r[10] . "' >".$r[2]." ".$r[3]."</a>\n";
+			echo	"\t<a class='kill_name' href='../profile/view_profile.php?id=" . $r["v_u.id"] . "' >".$r["v_u.fname"]." ".$r["v_u.lname"]."</a>\n";
 					
-						$time = date('D H:i', strtotime($r[7]));
-						$starve = date('D H:i', strtotime($r[4]));
-						echo "\t<h3><strong>".$r[5]."</strong> Kill";
-						echo ($r[5]==1) ? "":"s";
+						$time = date('D H:i', strtotime($r["k.time"]));
+						$starve = date('D H:i', strtotime($r["v_u.starve_time"]));
+						echo "\t<h3><strong>".$r["v_u.kills"]."</strong> Kill";
+						echo ($r["v_u.kills"]==1) ? "":"s";
 						echo "!</h3>\n";
 						echo "<p style='margin:0; padding:0; padding-left:5px; line-height:12px; font-size:12px;'>";
 						echo "&nbsp;&nbsp;&nbsp;<strong>Killed by:</strong> ";
@@ -424,7 +447,7 @@ function print_killboard($faction, $sort_array, $sort_by){
 							
 							foreach($ozs as $oz_id)
 							{
-								if ($r[9] == $oz_id)
+								if ($r["k_u.gt_name"] == $oz_id)
 								{
 									$killed_by_oz = true;
 								}
@@ -436,21 +459,21 @@ function print_killboard($faction, $sort_array, $sort_by){
 							}
 							else
 							{
-								echo "<a class='killer_name' href='../profile/view_profile.php?id=" . $r[11] . "' >" . $r[0] . " " . $r[1] . "</a>";
+								echo "<a class='killer_name' href='../profile/view_profile.php?id=" . $r["k_u.id"] . "' >" . $r["k_u.fname"] . " " . $r["k_u.lname"] . "</a>";
 							}
 						}
 						else
 						{
-							echo $r[0] . " " . $r[1];
+							echo $r["k_u.fname"] . " " . $r["k_u.lname"];
 						}
 						echo "<br>&nbsp;&nbsp;&nbsp;<strong>On</strong> $time<br>";
 						echo "&nbsp;&nbsp;&nbsp;<strong>Starves:</strong> $starve<br>";
 						echo "</p>";
 						echo "<p>";
-						if( $r[8]=='twrobel3' and $gt_name != 'twrobel3')
+						if( $r["v_u.gt_name"]=='twrobel3' and $gt_name != 'twrobel3')
 							echo "\t<p class='skinny_lines'>I'm why we can't have nice things</p>\n </div>\n";
 						else{
-							echo "\t<p class='skinny_lines'>".$r[6]."</p>\n";
+							echo "\t<p class='skinny_lines'>".$r["v_u.slogan"]."</p>\n";
 							echo "</div>\n";
 						}
 		}
@@ -458,14 +481,14 @@ function print_killboard($faction, $sort_array, $sort_by){
 }
 
 function print_killform($faction, $error){
-	global $gt_name;
+	global $gt_name, $db;
 	if($faction != "zombie")
 		return "";
 		
 	
-	$res = mysql_query("SELECT gt_name,fname, lname, kills, starve_time FROM users WHERE (faction='ZOMBIE' AND gt_name <> '$gt_name') ORDER BY starve_time ASC") or die(mysql_error());
+	$res = $db->query("SELECT gt_name,fname, lname, kills, starve_time FROM users WHERE (faction='ZOMBIE' AND gt_name <> '$gt_name') ORDER BY starve_time ASC") or die(mysql_error());
 	$list = "";
-	while( $r = mysql_fetch_array($res) ){
+	while( $r = $res->fetch_assoc()){
 		$time = date('D H:i', strtotime($r['starve_time']));
 		$s = ($r['kills']==1)? '' : 's';
 		$list .= "\t\t\t\t<option value='".$r['gt_name']."'>".$r['fname']." ".$r['lname']." - $time  - ".$r['kills']." kill$s</option>\n";	
@@ -508,7 +531,7 @@ function print_killform($faction, $error){
 
 function is_oz_flushed($game) {
     global $oz_flush_dates;
-	return /*(( time() > strtotime($oz_flush_dates[$game])) ? true : false)*/true;
+	return (( time() > strtotime($oz_flush_dates[$game])) ? true : false);
 }
 
 function quiz_open($game) {
@@ -531,7 +554,7 @@ function print_ach_checks($user) {
     
     $general = "SELECT `adata`.`id` AS `id`, `adata`.`name` AS `name`, `adata`.`category` AS `category`, `agets`.`time` AS `time` FROM `ach_data` AS `adata` LEFT OUTER JOIN (SELECT * FROM `ach_gets` WHERE `user` = '$user') AS `agets` ON `adata`.`id` = `agets`.`ach_id` WHERE `adata`.`category` = 'GENERAL' ORDER BY `adata`.`category`, `adata`.`id`";
     
-    $result = mysqli_query($ach_db, $human);
+    $result = $ach_db->query($human);
 	echo ("<div id='humanach' class='hide'><ul>");
 	while ($row = $result->fetch_object())
 	{
@@ -543,7 +566,7 @@ function print_ach_checks($user) {
 	
 	echo ("</ul></div><div id='zombieach' class='hide'><ul>");
 	
-	$result = mysqli_query($ach_db, $zombie);
+	$result = $ach_db->query($zombie);
 	while ($row = $result->fetch_object())
 	{
 		echo ("<li><label for='$row->id'>$row->name </label><input type='checkbox' id='$row->id'");
@@ -554,7 +577,7 @@ function print_ach_checks($user) {
 	
 	echo ("</ul></div><div id='generalach' class='show'><ul>");
 	
-	$result = mysqli_query($ach_db, $general);
+	$result = $ach_db->query($general);
 	
 	while ($row = $result->fetch_object())
 	{
@@ -568,16 +591,13 @@ function print_ach_checks($user) {
 
 function isOZ($name)
 {
-	//if (is_oz_flushed($current_game))
-	{
-		//return false;
-	}
+	global $db;
 
-	$query = "SELECT `oz` FROM `users` WHERE gt_name = '$name'";
+    $query = "SELECT `oz` FROM `users` WHERE gt_name = '$name'";
 
-	$result = mysql_query($query);
+	$result = $db->query($query);
 
-	$r = mysql_fetch_array($result);
+	$r = $result->fetch_assoc();
 
 	if ($r['oz'] == 1)
 	{

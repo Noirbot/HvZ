@@ -29,8 +29,8 @@
 	else
 		$cond = "WHERE faction='$audience' AND `signed_up`=1";
 		
-	$res = mysql_query("SELECT gt_name FROM users $cond");
-	while($r = mysql_fetch_array($res))
+	$res = $db->query("SELECT gt_name FROM users $cond");
+	while($r = $res->fetch_assoc())
 		$bcc .= $r['gt_name']."@mail.gatech.edu, ";
 	$bcc .= "vince.pedicino@inta.gatech.edu, jmartin34@mail.gatech.edu";
 	

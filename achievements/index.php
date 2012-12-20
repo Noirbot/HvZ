@@ -42,7 +42,7 @@
 		<?php
 			$query = "SELECT * FROM `ach_data` ORDER BY `category`, `id`";
 			
-			$result = mysqli_query($ach_db, $query);
+			$result = $ach_db->query($query);
 			
 			while ($row = $result->fetch_object())
 			{
