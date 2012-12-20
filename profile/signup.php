@@ -71,19 +71,19 @@
 		<table id='signup_table'>
 			<tr>
 				<td class='left' width="50%"><label for="fname">First Name</label></td>
-				<td><input name="fname" type="text" value="" /></td>
+				<td><input name="fname" id="fname" type="text" value="" /></td>
 			</tr>
 			<tr>
-				<td class='left'><label for="fname">Last Name</label></td>
-				<td><input name="lname" type="text" value="" /></td>
+				<td class='left'><label for="lname">Last Name</label></td>
+				<td><input name="lname" id="lname" type="text" value="" /></td>
 			</tr>
 			<tr>
 				<td class='left'><label for="slogan" class="optional">Slogan</label></td>
-				<td><input name="slogan" type="text" value="" /></td>
+				<td><input name="slogan" id="slogan" type="text" value="" /></td>
 			</tr>
 			<tr>
 				<td class='left'><label for="gender" class="optional">Gender</label></td>
-				<td><select name='gender'>
+				<td><select name='gender' id="gender">
 						<option value='PREFER_NOT_TO_ANSWER'>---</option>
 						<option value='MALE'>Male</option>
 						<option value='FEMALE'>Female</option>
@@ -92,12 +92,12 @@
 			</tr>
 			<tr>
 				<td class='left'><label for="major" class="optional">Major</label></td>
-				<td><input name="major" type="text" value="" /></td>
+				<td><input name="major" id="major" type="text" value="" /></td>
 			</tr>
 			<tr>
 				<td class='left'><label for="year" class="optional">Year</label></td>
 				<td>
-					<select name='year'>
+					<select name='year' id="year">
 						<option value='PREFER_NOT_TO_ANSWER'>---</option>
 						<option value='1'>1 year</option>
 						<option value='2'>2 years</option>
