@@ -1,6 +1,5 @@
 <?php
 	session_start();
-	$local=false;
     $current_game = "spring2013";
     $db_users = array(
     	"achievements" => "achieve",
@@ -15,23 +14,18 @@
         "spring2013" => "sextowel"
     );
 
-    if($local){
-        $gt_name='jmartin34';
-        $db = mysql_connect('127.0.0.1','root') or die("DBC Local Fail");
-    }
-
     $gt_name = $_ENV["REMOTE_USER"];
     $_SESSION["gtname"] = $gt_name;
 
     //$db = mysql_connect("web-db1.gatech.edu:3306",$db_users[$current_game],$db_pass[$current_game]) or die("DBC Remote Fail");
     $db = new mysqli("web-db1.gatech.edu",$db_users[$current_game],$db_pass[$current_game],$current_game,3306);
-    if ($db->errno()) {
+    if ($db->errno) {
         die('Connect Error (' . $db->errno . ') ' . $db->error);
     }
 
     $ach_db = new mysqli("web-db1.gatech.edu",$db_users["achievements"],$db_pass["achievements"],"achievements",3306);
-    if (mysqli_connect_errno()) {
-        die('Connect Error (' . $db->errno . ') ' . $db->error);
+    if ($db->connect_errno) {
+        die('Connect Error (' . $db->connect_errno . ') ' . $db->connect_error);
     }
 
 
@@ -69,9 +63,9 @@ function verify($gt_name){
 	// $res = mysql_query("SELECT * FROM `users` where `gt_name`='$gt_name'") or die("Verify Query Fail");
 	$res = $db->query("SELECT * FROM `users` where `gt_name`='$gt_name'") or die("Verify Query Fail");
 	
-	if(mysql_num_rows($res) == 0) {
+	if($res->num_rows == 0) {
 		// $ins = mysql_query("INSERT INTO `users` (gt_name) VALUES ('$gt_name')") or die("Addition Query Fail");
-		$db->query("INSERT INTO `users` (gt_name) VALUES ('$gt_name')") or die("Addition Query Fail");
+		$db->query("INSERT INTO `users` (gt_name) VALUES ('$gt_name')") or die("Addition Query Fail $gt_name");
 	}
 	
 	// $r = mysql_fetch_assoc($res);
@@ -84,16 +78,10 @@ function verify($gt_name){
 			return strtolower($r['faction']);
 		}
 	}
-	
-	if($local){
-		header( "Location: http://localhost/profile/signup.php" );
-		die();}
-	else{
-		header( "Location: http://hvz.gatech.edu/profile/signup.php" );
-		die();}
+
+    header( "Location: http://hvz.gatech.edu/profile/signup.php" );
+    die();
 }
-
-
 
 function first_time($gt_name){
 	global $db;
@@ -265,7 +253,7 @@ function print_deathbar() {
 		$index = 0;
 		$query = "SELECT gt_name FROM users WHERE oz=1";
 		$oz_res = $db->query($query) or die($db->error);
-		while ($one_oz = $oz_res->fetch_assoc())
+		while ($one_oz = $oz_res->fetch_array(MYSQLI_NUM))
 		{
 			$ozs[$index] = $one_oz[0];
 			$index++;
@@ -275,20 +263,6 @@ function print_deathbar() {
 	echo ('<h2 style="padding-left:5px;">Fresh Kills</h2>');
 	
 	while($r = $db_res->fetch_assoc()){
-		/* MySQL or PHP fails.  If doesn't allow you to rename the keys in the associative array.
-		 *   actually, i realized i just need to say k_u.fname kfname, etc. but this is low on the prio list
-		 *  So as a key:
-		 * 0 = killer fname
-		 * 1 = killer lname
-		 * 2 = victim fname
-		 * 3 = victim lname
-		 * 4 = victim starve time
-		 * 5 = victim kills
-		 * 6 = victim slogan
-		 * 7 = victim time of zombification
-		 * 8 = victim gt_name
-		 * 9 = killer gt_name
-		 */
 		echo	"<div class='deathbar_item'>\n".
 				"\t<h1>".$r["v_u.fname"]." ".$r["v_u.lname"]."</h1>\n";
 				
@@ -396,7 +370,7 @@ function print_killboard($faction, $sort_array, $sort_by){
 			$index = 0;
 			$query = "SELECT gt_name FROM users WHERE oz=1";
 			$oz_res = $db->query($query) or die($db->error);
-			while ($one_oz = $oz_res->fetch_assoc())
+			while ($one_oz = $oz_res->fetch_array(MYSQLI_NUM))
 			{
 				$ozs[$index] = $one_oz[0];
 				$index++;
@@ -404,23 +378,6 @@ function print_killboard($faction, $sort_array, $sort_by){
 		}
 		
 		while( $r = $kb_res->fetch_assoc()){
-			/* MySQL or PHP fails.  If doesn't allow you to rename the keys in the associative array.
-			 *   actually, i realized i just need to say k_u.fname kfname, etc. but this is low on the prio list
-			 *  So as a key:
-			 * 0 = killer fname k_u.fname
-			 * 1 = killer lname k_u.lname
-			 * 2 = victim fname v_u.fname
-			 * 3 = victim lname v_u.lname
-			 * 4 = victim starve time v_u.starve_time
-			 * 5 = victim kills v_u.kills
-			 * 6 = victim slogan v_u.slogan
-			 * 7 = victim time of zombification k.time
-			 * 8 = victim gt_name v_u.gt_name
-			 * 9 = killer gt_name k_u.gt_name
-			 * 10 = victim id v_u.id
-			 * 11 = killer id k_u.id
-			 * 12 = victim avatar v_u.avatar
-			 */
 			echo	"<div class='zombie_killboard_item'>\n";
 				
 			if ($r["v_u.avatar"] != "")

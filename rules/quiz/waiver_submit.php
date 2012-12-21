@@ -2,12 +2,8 @@
     require("../../scripts/lib.php");
 
     if( count($_POST) == 0 ){
-        if($local){
-            header( "Location: http://localhost/faction/" );
-            die();}
-        else{
-            header( "Location: http://hvz.gatech.edu/faction/" );
-            die();}
+        header( "Location: http://hvz.gatech.edu/faction/" );
+        die();
     }
 
     /*if (!quiz_open($current_game) && $gt_name != "pshuman3")
@@ -35,10 +31,6 @@
     $query = "UPDATE `users` SET `faction`='human', `rules_quiz`='1', `player_code`='$player_code', `gtid`='$gtid' WHERE `gt_name`='$gt_name'";
     $db->query($query) or die("RULES UPDATE query fail");
 
-    if($local){
-        header( "Location: http://localhost/profile/" );
-        die();}
-    else{
-        header( "Location: http://hvz.gatech.edu/profile/" );
-        die();}
+    header( "Location: http://hvz.gatech.edu/profile/" );
+    die();
 ?>

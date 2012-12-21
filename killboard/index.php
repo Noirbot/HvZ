@@ -6,10 +6,7 @@
 	$quizzed = taken_quiz($gt_name);
 	if ($quizzed == False)
 	{
-		if($local)
-			header("Location: http://localhost/faction/inactive.php");
-		else
-			header("Location: http://hvz.gatech.edu/faction/inactive.php");
+		header("Location: http://hvz.gatech.edu/faction/inactive.php");
 	}
 	
 	$sort_by='';

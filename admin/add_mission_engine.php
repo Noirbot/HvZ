@@ -4,10 +4,7 @@
 	$faction = verify($gt_name);
 	
 	if($faction != 'admin'){
-		if($local)
-			header( "Location: http://localhost/faction/$faction.php" );
-		else
-			header( "Location: http://hvz.gatech.edu/faction/$faction.php" );
+    	header( "Location: http://hvz.gatech.edu/faction/$faction.php" );
 	}
 
 	$name = (isset($_POST['name']) and $_POST['name']) ? $db->escape_string($_POST['name']) : 'error';

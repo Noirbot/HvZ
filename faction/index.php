@@ -12,24 +12,12 @@
 	$quizzed = taken_quiz($gt_name);
 	if ($quizzed == False)
 	{
-		if($local)
-			header("Location: http://localhost/faction/inactive.php");
-		else
-			header("Location: http://hvz.gatech.edu/faction/inactive.php");
-	}
-	
-	if($local)
-		if ($faction != 'admin')
-			header( "Location: http://hvz.gatech.edu/faction/$faction.php" );
-		else
-			header( "Location: http://hvz.gatech.edu/admin/" );
-	else
-	{
-		if ($faction != 'admin')
-			header( "Location: http://hvz.gatech.edu/faction/$faction.php" );
-		else
-			header( "Location: http://hvz.gatech.edu/admin/" );
+		header("Location: http://hvz.gatech.edu/faction/inactive.php");
 	}
 
+    if ($faction != 'admin')
+        header( "Location: http://hvz.gatech.edu/faction/$faction.php" );
+    else
+        header( "Location: http://hvz.gatech.edu/admin/" );
 ?>
 

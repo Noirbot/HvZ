@@ -9,10 +9,7 @@
 	<?php 
 		require("../scripts/lib.php"); 
 		
-		if($local)
-			$gt_name='jmartinBANANAPHONE';
-		else
-			$gt_name = $_ENV["REMOTE_USER"];
+    	$gt_name = $_ENV["REMOTE_USER"];
 		
 		$res = $db->query("SELECT * FROM `users` WHERE `gt_name`='$gt_name'") or die("User Query Fail");
 		$r = $res->fetch_assoc();

@@ -2,12 +2,8 @@
 	require("../../scripts/lib.php");
 	
 	if( count($_POST) == 0 ){
-		if($local){
-			header( "Location: http://localhost/faction/" );
-			die();}
-		else{
-			header( "Location: http://hvz.gatech.edu/faction/" );
-			die();}
+    	header( "Location: http://hvz.gatech.edu/faction/" );
+		die();
 	}
 
     /*if (!quiz_open($current_game) && $gt_name != "pshuman3")

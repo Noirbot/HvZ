@@ -4,19 +4,13 @@
 	$faction = verify($gt_name);
 	
 	if($faction != 'human' and $faction !='zombie' and $faction != 'admin'){
-		if($local)
-			header( "Location: http://localhost/faction/$faction.php" );
-		else
-			header( "Location: http://hvz.gatech.edu/faction/$faction.php" );
+		header( "Location: http://hvz.gatech.edu/faction/$faction.php" );
 	}
 	
 	$quizzed = taken_quiz($gt_name);
 	if ($quizzed == False)
 	{
-		if($local)
-			header("Location: http://localhost/faction/inactive.php");
-		else
-			header("Location: http://hvz.gatech.edu/faction/inactive.php");
+		header("Location: http://hvz.gatech.edu/faction/inactive.php");
 	}
 
 
