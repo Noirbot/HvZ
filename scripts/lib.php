@@ -152,27 +152,27 @@ function beta_print_chat($show_del, $chat_faction, $count){
 	}
 }
 
-function print_chat($user_faction,$chat_faction, $count){
-
-    $res = mysql_query("SELECT twits.id, fname, lname, oz, timestamp, faction, comment FROM `twits` JOIN (`users`) ON (twits.user=users.gt_name) WHERE audience='$chat_faction' ORDER BY twits.id DESC $count");
-
-    while( $r = mysql_fetch_array($res)){
-        $id=$r['id'];
-        $time = date('D H:i', strtotime($r['timestamp']));
-        $fname=$r['fname'];
-        $lname=$r['lname'];
-        $comment=$r['comment'];
-        $fact = ($r['oz'] == 1) ? "human" : strtolower($r['faction']);
-        echo "<div class='chat_item'>\n".
-            "\t<img src='../images/avatars/tiny_$fact.png' width='50px' />\n".
-            "\t<h1>$fname $lname</h1> <h2>$time</h2>\n";
-        if($user_faction=="admin")
-            echo "<input type='button' value='X' style='float:right; color:red; border:none;' onclick='remove_chat($id)'>";
-
-        echo "\t<p>$comment</p>\n".
-            "</div>\n";
-    }
-}
+//function print_chat($user_faction,$chat_faction, $count){
+//
+//    $res = mysql_query("SELECT twits.id, fname, lname, oz, timestamp, faction, comment FROM `twits` JOIN (`users`) ON (twits.user=users.gt_name) WHERE audience='$chat_faction' ORDER BY twits.id DESC $count");
+//
+//    while( $r = mysql_fetch_array($res)){
+//        $id=$r['id'];
+//        $time = date('D H:i', strtotime($r['timestamp']));
+//        $fname=$r['fname'];
+//        $lname=$r['lname'];
+//        $comment=$r['comment'];
+//        $fact = ($r['oz'] == 1) ? "human" : strtolower($r['faction']);
+//        echo "<div class='chat_item'>\n".
+//            "\t<img src='../images/avatars/tiny_$fact.png' width='50px' />\n".
+//            "\t<h1>$fname $lname</h1> <h2>$time</h2>\n";
+//        if($user_faction=="admin")
+//            echo "<input type='button' value='X' style='float:right; color:red; border:none;' onclick='remove_chat($id)'>";
+//
+//        echo "\t<p>$comment</p>\n".
+//            "</div>\n";
+//    }
+//}
 
 function print_missions($faction){
 	global $db;
