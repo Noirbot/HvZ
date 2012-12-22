@@ -75,11 +75,8 @@
         <div id="support"><a name="navigation"></a>
             <?php printSideBar(); ?>
         </div>
-
-       <div id="content" class="">
-
+        <div id="content" class="">
             <div id="profile">
-
                 <?php
                     $res = $db->query("SELECT * FROM `users` WHERE `gt_name`='$gt_name'") or die("User Query Fail");
                     $r = $res->fetch_assoc();
