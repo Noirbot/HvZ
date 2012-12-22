@@ -16,19 +16,12 @@
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
 <head>
 <title>Humans vs Zombies - Georgia Tech</title>
 <link type="text/css" rel="stylesheet" href="/css/base.css">
 
 <script type="text/javascript">
-	function chk_len(e){
-		if(e.value.length>140){
-			e.value = e.value.substr(0,140);
-			alert("Messages are capped at 140 characters");
-		}
-	}
-
 	function post(){
         var newChat = encodeURI(document.getElementById("chatarea").value);
         var audience = document.getElementById("audience").value;
@@ -128,7 +121,7 @@
 
     <div id="content" class="">
         <div id="chats">
-            <h2>Available Chat Rooms:</h2>
+            <h2 style="display: inline">Available Chat Rooms: </h2><span>Now availabe in <a href="full_chat.php">full screen mode</a>!</span><br/>
             <input type="button" value="All" id="all" class="selectors" onclick="loadChat('all')">
             <?php
             if ($faction == "admin")
@@ -183,7 +176,7 @@ ADMIN;
                 ?>
             </div>
             <input type="hidden" name="faction" id="audience" value="all"/>
-            <textarea name="comment" onkeyup="chk_len(this); if (event.keyCode == 13) document.getElementById('subbtn').click()" class="twitbox" id="chatarea"></textarea>
+            <textarea name="comment" onkeyup="if (event.keyCode == 13) document.getElementById('subbtn').click()" class="twitbox" id="chatarea"></textarea>
             <input type="button" id="subbtn" onclick="post()" value="Post" style="display:inline; vertical-align: top;"/>
             <input type="button" onclick="updateRequest(0)" value="Update" style="display:inline; vertical-align: top;"/>
         </div>
