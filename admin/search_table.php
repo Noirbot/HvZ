@@ -146,7 +146,7 @@
                             Last Name <input type='text' name='lname' id='lname' onkeyup="set_visible()"/>
 		        </form>
 		        <form action='admin.php' method='post'>
-			        <?php $res = $db->query("SELECT * FROM users ORDER BY `faction` DESC, `early_mission` DESC, `late_mission` DESC, lname ASC, fname ASC"); ?>
+			        <?php $res = $db->query("SELECT * FROM users WHERE (fname != '' OR lname != '') AND fname != 'Feed' AND lname != 'Feed' ORDER BY `faction` DESC, `early_mission` DESC, `late_mission` DESC, lname ASC, fname ASC"); ?>
 			        <table border='1' style="padding:0; margin:0;" id="users">
 						<tr>
                             <td><strong>F Name</strong></td>
@@ -185,7 +185,6 @@
                                 echo "<td><input type='checkbox' name='$id|rules_quiz' value='rules_quiz' $rules_check onclick='toggle_checkbox(\"rules_quiz\",$id)'/></td>";
 								echo "</tr>\n";
 						 }
-						 
 						 ?>
 			        </table>
 		        </form>        
