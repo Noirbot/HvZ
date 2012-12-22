@@ -48,6 +48,8 @@ input, textarea, select { background: #fff; border: 1px solid #d7b350; font-fami
 
 #meat { margin: 0 auto; width: 1040px; margin-top:5px;}
 
+#full_meat {margin: 10px;}
+
 	#support { float: left; width: 110px;
 					border:3px solid #c5a757;
 					border-radius:5px;
@@ -153,6 +155,10 @@ input, textarea, select { background: #fff; border: 1px solid #d7b350; font-fami
 	
 	#chats{
 		<!-- [if IE] width:100% -->;}
+
+    #full_chats {
+        width: 100%;
+    }
 	
 	#leftChat{margin-left:20px;width:310px;float:left; margin-right: 20px;
 		<!-- [if IE] width:100% -->;}
@@ -160,6 +166,10 @@ input, textarea, select { background: #fff; border: 1px solid #d7b350; font-fami
 	
 	#rightChat{	margin-right:20px;width:310px;float:right;margin-left:20px;
 		<!-- [if IE] width:100% -->;}
+    #full_current_chat {
+        display: inline;
+        margin-left: 10px;
+    }
 	
 	.chat_item{ width:305px; margin-bottom:5px; border:1px solid #C90; border-radius:10px; -moz-border-radius:10px; min-height:69px; overflow:auto;<!-- [if IE] width:100% -->;}
 	.chat_item img{float:left; margin:4px;}
@@ -168,6 +178,14 @@ input, textarea, select { background: #fff; border: 1px solid #d7b350; font-fami
 	.chat_item p{margin:0px; font-size:12px; line-height:12px;}
 
     #multichat {width: 700px; height: 500px; overflow-y: auto; margin-top: 10px;}
+
+    #full_multichat {width: 100%; overflow-y: auto; margin-top: 10px; margin-bottom: 10px; }
+
+    #full_multichat table tbody tr td {
+        padding-right: 10px;
+    }
+
+    #full_chatbar { position: absolute; left: 10px; width: 100%; }
     
     #factionmultichat {width: 700px; height: 200px; overflow-y: auto; margin-top: 10px;}
 
@@ -228,7 +246,8 @@ input, textarea, select { background: #fff; border: 1px solid #d7b350; font-fami
 	
 	
 	.twitbox {width:290px; height:60px;}
-	
+	.full_twitbox {height: 20px; width: 90%;}
+
 	.ach_entry {width:95%; border-style:solid; border-width:1px; border-color:#E3CA84; height:60; padding-top: 5px;}
 	.ach_title {margin:2px 5px;}
 	.ach_desc {margin:2px 5px;}
@@ -240,6 +259,8 @@ input, textarea, select { background: #fff; border: 1px solid #d7b350; font-fami
     .killer_name:hover {font-size:12px; line-height:12px; display:inline; text-decoration: underline; color: #000000;}
 
     .wrong {color: red;}
+
+
 	
 	
 	
