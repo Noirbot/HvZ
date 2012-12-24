@@ -145,49 +145,47 @@
 							First Name <input type='text' name='fname' id='fname' onkeyup="set_visible()"/>
                             Last Name <input type='text' name='lname' id='lname' onkeyup="set_visible()"/>
 		        </form>
-		        <form action='admin.php' method='post'>
-			        <?php $res = $db->query("SELECT * FROM users WHERE (fname != '' OR lname != '') AND fname != 'Feed' AND lname != 'Feed' ORDER BY `faction` DESC, `early_mission` DESC, `late_mission` DESC, lname ASC, fname ASC"); ?>
-			        <table border='1' style="padding:0; margin:0;" id="users">
-						<tr>
-                            <td><strong>F Name</strong></td>
-                            <td><strong>L Name</strong></td>
-                            <td><strong>GT Name</strong></td>
-                            <td><strong>GTID</strong></td>
-                            <td><strong>Faction</strong></td>
-                            <td><strong>Code</strong></td>
-                            <td><strong>M1</strong></td>
-                            <td><strong>M2</strong></td>
-                            <td><strong>M#</strong></td>
-                            <td><strong>M+1</strong></td>
-                            <td><strong>Has Info</strong></td>
-                            <td><strong>Quiz</strong></td>
-			            </tr>
-			             
-						 <?php
-						 while($r = $res->fetch_assoc()){
-							 $id=$r['id'];
-							 $emission_check = ($r['early_mission']) ? "checked='checked'" : '';
-							 $lmission_check = ($r['late_mission']) ? "checked='checked'" : '';
-							 $signed_check= ($r['signed_up']) ? "checked='checked'" : '';
-							 $rules_check = ($r['rules_quiz']) ? "checked='checked'" : '';
-							echo "\t\t<tr class='hide'>";
-                                echo "<td>".$r['fname']."</td>";
-                                echo "<td>".$r['lname']."</td>";
-                                echo "<td><a href='../profile/edit_player.php?id=$id'>".$r['gt_name']."</a></td>";
-                                echo "<td>".$r['gtid']."</td>";
-                                echo "<td>".$r['faction']."</td>";
-                                echo "<td>".$r['player_code']."</td>";
-                                echo "<td><input type='checkbox' name='$id|mission' value='early' $emission_check onclick='toggle_checkbox(\"early_mission\",$id)'/></td>";
-                                echo "<td><input type='checkbox' name='$id|mission' value='late' $lmission_check onclick='toggle_checkbox(\"late_mission\",$id)'/> </td>";
-                                echo "<td>" . ($r['mission_count'] + $r['early_mission'] + $r['late_mission']) . "</td>";
-                                echo "<td><input type='button' onclick='add_mission($id)' value='+1'/></td>";
-                                echo "<td><input type='checkbox' name='$id|signed_up' value='signed_up' $signed_check onclick='toggle_checkbox(\"signed_up\",$id)'/></td>";
-                                echo "<td><input type='checkbox' name='$id|rules_quiz' value='rules_quiz' $rules_check onclick='toggle_checkbox(\"rules_quiz\",$id)'/></td>";
-								echo "</tr>\n";
-						 }
-						 ?>
-			        </table>
-		        </form>        
+                <?php $res = $db->query("SELECT * FROM users WHERE (fname != '' OR lname != '') AND fname != 'Feed' AND lname != 'Feed' ORDER BY `faction` DESC, `early_mission` DESC, `late_mission` DESC, lname ASC, fname ASC"); ?>
+                <table border='1' style="padding:0; margin:0;" id="users">
+                    <tr>
+                        <td><strong>F Name</strong></td>
+                        <td><strong>L Name</strong></td>
+                        <td><strong>GT Name</strong></td>
+                        <td><strong>GTID</strong></td>
+                        <td><strong>Faction</strong></td>
+                        <td><strong>Code</strong></td>
+                        <td><strong>M1</strong></td>
+                        <td><strong>M2</strong></td>
+                        <td><strong>M#</strong></td>
+                        <td><strong>M+1</strong></td>
+                        <td><strong>Has Info</strong></td>
+                        <td><strong>Quiz</strong></td>
+                    </tr>
+
+                     <?php
+                     while($r = $res->fetch_assoc()){
+                         $id=$r['id'];
+                         $emission_check = ($r['early_mission']) ? "checked='checked'" : '';
+                         $lmission_check = ($r['late_mission']) ? "checked='checked'" : '';
+                         $signed_check= ($r['signed_up']) ? "checked='checked'" : '';
+                         $rules_check = ($r['rules_quiz']) ? "checked='checked'" : '';
+                        echo "\t\t<tr class='hide'>";
+                            echo "<td>".$r['fname']."</td>";
+                            echo "<td>".$r['lname']."</td>";
+                            echo "<td><a href='../profile/edit_player.php?id=$id'>".$r['gt_name']."</a></td>";
+                            echo "<td>".$r['gtid']."</td>";
+                            echo "<td>".$r['faction']."</td>";
+                            echo "<td>".$r['player_code']."</td>";
+                            echo "<td><input type='checkbox' name='$id|mission' value='early' $emission_check onclick='toggle_checkbox(\"early_mission\",$id)'/></td>";
+                            echo "<td><input type='checkbox' name='$id|mission' value='late' $lmission_check onclick='toggle_checkbox(\"late_mission\",$id)'/> </td>";
+                            echo "<td>" . ($r['mission_count'] + $r['early_mission'] + $r['late_mission']) . "</td>";
+                            echo "<td><input type='button' onclick='add_mission($id)' value='+1'/></td>";
+                            echo "<td><input type='checkbox' name='$id|signed_up' value='signed_up' $signed_check onclick='toggle_checkbox(\"signed_up\",$id)'/></td>";
+                            echo "<td><input type='checkbox' name='$id|rules_quiz' value='rules_quiz' $rules_check onclick='toggle_checkbox(\"rules_quiz\",$id)'/></td>";
+                            echo "</tr>\n";
+                     }
+                     ?>
+                </table>
 			</div>
 		</div>
 	</div>
