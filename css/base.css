@@ -260,7 +260,6 @@ input, textarea, select { background: #fff; border: 1px solid #d7b350; font-fami
 
     .wrong {color: red;}
 
-
-	
+.lookupButtons { position: relative; top: -5px; }
 	
 	

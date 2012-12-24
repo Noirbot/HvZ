@@ -1,5 +1,5 @@
 <?php
-	require("../scripts/lib.php"); 
+	require("../../scripts/lib.php");
 
 	$faction = verify($gt_name);
 	
@@ -12,7 +12,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>Humans vs Zombies - Georgia Tech</title>
-<link type="text/css" rel="stylesheet" href="../css/base.css">
+<link type="text/css" rel="stylesheet" href="../../css/base.css">
 </head>
 <body>
 	<div id="header">
@@ -30,7 +30,7 @@
 	    </div>
 	    <div id="utilityBar"></div>
 	    <div id="breadcrumb">
-	    	<form action='../logout.php'><input type='submit' value='Logout' style='float:right; margin-right:250px;'/></form>
+	    	<form action='../../logout.php'><input type='submit' value='Logout' style='float:right; margin-right:250px;'/></form>
 	    </div>
 	</div>
 	<div id="meat">

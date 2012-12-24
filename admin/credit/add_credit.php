@@ -1,5 +1,5 @@
 <?php 
-	require("../scripts/lib.php"); 
+	require("../../scripts/lib.php");
 
 	$faction = verify($gt_name);
 

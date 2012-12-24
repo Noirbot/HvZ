@@ -54,9 +54,7 @@
 		<h2><a href="../faction/zombie.php">Zombie View</a></h2>
 		<h2><a href="../faction/human.php">Human View</a></h2>
         <h2><a href="betachat.php">Chat Control</a></h2>
-        <h2><a href="secchat/index.php">Beta Secure Chat</a></h2>
-        <h2><a href="addMissionCredit.php">Grant Mission Credit</a></h2>
-        	<!--<h2><a href="cap.php">(Beta) Capture Points</a></h2>-->
+        <h2><a href="credit/gtidLookup.php">Grant Mission Credit</a></h2>
    </div>
 </div>
 </body>
