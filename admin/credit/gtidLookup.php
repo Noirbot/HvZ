@@ -15,8 +15,12 @@ if($faction != 'admin'){
     <link type="text/css" rel="stylesheet" href="../../css/base.css">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" type="text/javascript"></script>
     <script type="text/javascript">
-        function processGTIDs() {
-            var input = $("#gtidIn").val().split("\n");
+        function processGTIDs(gtidArray) {
+            var input;
+            if (!gtidArray)
+                input = $("#gtidIn").val().split("\n");
+            else
+                input = gtidArray;
 
             $.ajax({
                 type: "POST",
@@ -32,7 +36,22 @@ if($faction != 'admin'){
 
         function addCredit(isLate)
         {
+            var gtids = [];
+            $('.valid').each( function(){
+                var col = $(this).children(".gtid");
+                gtids.push( col.text() );
+            });
 
+            alert(gtids);
+
+            $.ajax({
+                type: "POST",
+                url: "_addCredit.php",
+                data: {gtids: gtids, isLate: isLate},
+                cache: false
+            });
+
+            processGTIDs(gtids);
         }
     </script>
 </head>
@@ -78,7 +97,6 @@ if($faction != 'admin'){
                     <td><strong>Name</strong></td>
                     <td><strong>Early</strong></td>
                     <td><strong>Late</strong></td>
-                    <td><strong>Other</strong></td>
                 </tr>
             </table>
             <p id="out"></p>

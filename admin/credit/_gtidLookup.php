@@ -3,7 +3,7 @@ require("../../scripts/lib.php");
 
 $faction = verify($gt_name);
 
-$table = "<tr><td><strong>GTID</strong></td><td><strong>Name</strong></td><td><strong>Early</strong></td><td><strong>Late</strong></td><td><strong>Other</strong></td></tr>";
+$table = "<tr><td><strong>GTID</strong></td><td><strong>Name</strong></td><td><strong>Early</strong></td><td><strong>Late</strong></td></tr>";
 
 if($faction != 'admin'){
     header( "Location: http://hvz.gatech.edu/faction/$faction.php" );
@@ -12,7 +12,7 @@ if($faction != 'admin'){
 $toparse = $_POST["gtids"];
 
 
-if($query = $db->prepare("SELECT gtid, fname, lname, early_mission, late_mission, mission_count FROM users WHERE gtid=?"))
+if($query = $db->prepare("SELECT gtid, fname, lname, early_mission, late_mission FROM users WHERE gtid=?"))
 {
     foreach($toparse as $line){
         if (is_null($line) || $line == "")
@@ -20,31 +20,21 @@ if($query = $db->prepare("SELECT gtid, fname, lname, early_mission, late_mission
 
         if (!is_numeric($line))
         {
-            $table .= "<tr><td>$line</td><td>Is not valid</td><td>-</td><td>-</td><td>-</td></tr>";
+            $table .= "<tr class='invalid'><td>$line</td><td>Is not valid</td><td>-</td><td>-</td></tr>";
             continue;
         }
 
         $query->bind_param("s", $line);
         $query->execute();
-        $query->bind_result($gtid, $fname, $lname, $early, $late, $count);
+        $query->bind_result($gtid, $fname, $lname, $early, $late);
 
         if (!$query->fetch())
         {
-            $table .= "<tr><td>$line</td><td>No Results</td><td>-</td><td>-</td><td>-</td></tr>";
+            $table .= "<tr class='invalid'><td>$line</td><td>No Results</td><td>-</td><td>-</td></tr>";
             continue;
         }
 
-        if ($early == 1)
-            $early = "✓";
-        else
-            $early = "-";
-
-        if ($late == 1)
-            $late = "✓";
-        else
-            $late = "-";
-
-        $table .= "<tr><td>$gtid</td><td>$fname $lname</td><td>$early</td><td>$late</td><td>$count</td></tr>";
+        $table .= "<tr class='valid'><td class='gtid'>$gtid</td><td>$fname $lname</td><td>$early</td><td>$late</td></tr>";
     }
 
     $query->close();

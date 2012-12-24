@@ -13,7 +13,7 @@
 <head>
 <title>Humans vs Zombies - Georgia Tech</title>
 <link type="text/css" rel="stylesheet" href="../css/base.css">
-
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" type="text/javascript"></script>
 <script type="text/javascript">
 	function toggle_checkbox(checkbox_name, id){
 		var request = new XMLHttpRequest();
@@ -81,17 +81,41 @@
         }
 	}
 
-	function add_mission(id)
+	function add_mission(id, isLate)
 	{
-		var request = new XMLHttpRequest();
-		request.open("GET", "add_credit.php?id="+id+"&mode=1", false);
-		request.send(null);
+//		var request = new XMLHttpRequest();
+//        if (isLate)
+//		    request.open("GET", "credit/add_credit.php?id="+id+"&mode=1&late=true", false);
+//        else
+//            request.open("GET", "credit/add_credit.php?id="+id+"&mode=1&late=false", false);
+//		request.send(null);
+
+        var lookupID = isLate ? "lmission" : "emission";
+
+        var $button = $("#" + id).find("." + lookupID);
+
+        $button.css("background-color", "black")
+
+        $.ajax({
+            type: "POST",
+            url: "credit/add_credit.php",
+            data: {id: id, mode : 1, late : isLate},
+            cache: false,
+            success: function(data)
+            {
+                $button.val(parseInt($button.val()) + 1);
+            }
+        });
+
+        setTimeout( function() {
+            $button.css("background-color", "white");
+        }, 250);
 	}
 
 	function rem_mission(id)
 	{
 		var request = new XMLHttpRequest();
-		request.open("GET", "add_credit.php?id="+id+"&mode=0", false);
+		request.open("GET", "credit/add_credit.php?id="+id+"&mode=0", false);
 		request.send(null);
 	}
 </script>
@@ -156,8 +180,6 @@
                         <td><strong>Code</strong></td>
                         <td><strong>M1</strong></td>
                         <td><strong>M2</strong></td>
-                        <td><strong>M#</strong></td>
-                        <td><strong>M+1</strong></td>
                         <td><strong>Has Info</strong></td>
                         <td><strong>Quiz</strong></td>
                     </tr>
@@ -165,21 +187,19 @@
                      <?php
                      while($r = $res->fetch_assoc()){
                          $id=$r['id'];
-                         $emission_check = ($r['early_mission']) ? "checked='checked'" : '';
-                         $lmission_check = ($r['late_mission']) ? "checked='checked'" : '';
+                         $emission = $r['early_mission'];
+                         $lmission = $r['late_mission'];
                          $signed_check= ($r['signed_up']) ? "checked='checked'" : '';
                          $rules_check = ($r['rules_quiz']) ? "checked='checked'" : '';
-                        echo "\t\t<tr class='hide'>";
+                        echo "\t\t<tr class='hide' id='$id''>";
                             echo "<td>".$r['fname']."</td>";
                             echo "<td>".$r['lname']."</td>";
                             echo "<td><a href='../profile/edit_player.php?id=$id'>".$r['gt_name']."</a></td>";
                             echo "<td>".$r['gtid']."</td>";
                             echo "<td>".$r['faction']."</td>";
                             echo "<td>".$r['player_code']."</td>";
-                            echo "<td><input type='checkbox' name='$id|mission' value='early' $emission_check onclick='toggle_checkbox(\"early_mission\",$id)'/></td>";
-                            echo "<td><input type='checkbox' name='$id|mission' value='late' $lmission_check onclick='toggle_checkbox(\"late_mission\",$id)'/> </td>";
-                            echo "<td>" . ($r['mission_count'] + $r['early_mission'] + $r['late_mission']) . "</td>";
-                            echo "<td><input type='button' onclick='add_mission($id)' value='+1'/></td>";
+                            echo "<td><input type='button' onclick='add_mission($id, false)' value='$emission' class='emission'/></td>";
+                            echo "<td><input type='button' onclick='add_mission($id, true)' value='$lmission' class='lmission'/></td>";
                             echo "<td><input type='checkbox' name='$id|signed_up' value='signed_up' $signed_check onclick='toggle_checkbox(\"signed_up\",$id)'/></td>";
                             echo "<td><input type='checkbox' name='$id|rules_quiz' value='rules_quiz' $rules_check onclick='toggle_checkbox(\"rules_quiz\",$id)'/></td>";
                             echo "</tr>\n";
