@@ -83,13 +83,6 @@
 
 	function add_mission(id, isLate)
 	{
-//		var request = new XMLHttpRequest();
-//        if (isLate)
-//		    request.open("GET", "credit/add_credit.php?id="+id+"&mode=1&late=true", false);
-//        else
-//            request.open("GET", "credit/add_credit.php?id="+id+"&mode=1&late=false", false);
-//		request.send(null);
-
         var lookupID = isLate ? "lmission" : "emission";
 
         var $button = $("#" + id).find("." + lookupID);
