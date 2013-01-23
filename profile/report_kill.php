@@ -27,7 +27,7 @@ if( isset($_POST['code']) and $_POST['code']!="" ){
 		if ($r['faction'] != 'HUMAN')
 			$errors.="That human's a spy! (The code you entered does not belong to an active human)";
 		else{
-			$insert_kill = mysql_query("INSERT INTO kills (killer, victim, lat, lng) VALUES ('$gt_name','".$r['gt_name']."', '$y', '$x')") or die("insert_kill fail");
+			$insert_kill = $db->query("INSERT INTO kills (killer, victim, lat, lng) VALUES ('$gt_name','".$r['gt_name']."', '$y', '$x')") or die("insert_kill fail");
 			if( date("H") < "07" )
 				$starve = date("Y-m-d H:m:s", strtotime("+28 hours"));
 			else
