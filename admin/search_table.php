@@ -194,7 +194,7 @@
                         echo "\t\t<tr class='hide' id='$id''>";
                             echo "<td>".$r['fname']."</td>";
                             echo "<td>".$r['lname']."</td>";
-                            echo "<td><a href='../profile/edit_player.php?id=$id'>".$r['gt_name']."</a></td>";
+                            echo "<td><a href='../profile/index.php?id=$id'>".$r['gt_name']."</a></td>";
                             echo "<td>".$r['gtid']."</td>";
                             echo "<td>".$r['faction']."</td>";
                             echo "<td>".$r['player_code']."</td>";

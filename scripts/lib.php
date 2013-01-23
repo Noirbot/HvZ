@@ -14,7 +14,7 @@
         "spring2013" => "sextowel"
     );
 
-    $gt_name = $_ENV["REMOTE_USER"];
+    $gt_name = $_ENV["REMOTE_USER"] ? $_ENV["REMOTE_USER"] : "";
     $_SESSION["gtname"] = $gt_name;
 
     //$db = mysql_connect("web-db1.gatech.edu:3306",$db_users[$current_game],$db_pass[$current_game]) or die("DBC Remote Fail");
@@ -60,12 +60,14 @@
 function verify($gt_name){
 	global $db;
 
-	// $res = mysql_query("SELECT * FROM `users` where `gt_name`='$gt_name'") or die("Verify Query Fail");
 	$res = $db->query("SELECT * FROM `users` where `gt_name`='$gt_name'") or die("Verify Query Fail");
 	
 	if($res->num_rows == 0) {
-		// $ins = mysql_query("INSERT INTO `users` (gt_name) VALUES ('$gt_name')") or die("Addition Query Fail");
 		$db->query("INSERT INTO `users` (gt_name) VALUES ('$gt_name')") or die("Addition Query Fail $gt_name");
+        $res2 = $db->query("SELECT id FROM `users` where `gt_name`='$gt_name'");
+        $r2 = $res2->fetch_object();
+        $_SESSION["id"] = $r2->id;
+        $_SESSION["faction"] = "INACTIVE";
 	}
 	
 	// $r = mysql_fetch_assoc($res);
@@ -75,6 +77,7 @@ function verify($gt_name){
 		if($r['faction'])
 		{
 			$_SESSION["faction"] = $r["faction"];
+            $_SESSION["id"] = $r["id"];
 			return strtolower($r['faction']);
 		}
 	}
@@ -146,7 +149,7 @@ function beta_print_chat($show_del, $chat_faction, $count){
         if($show_del)
             echo "<td><input type='button' value='X' style='float:left; color:red; border:none; font-size:10px; line-height:10px;' onclick='remove_chat($id, \"$chat_faction\")'></td>";
 
-        echo "<td><a href='../profile/view_profile.php?id=$uid'>$fname $lname</a></td><td>$time</td><td><div class='comments'>$comment</div></td>";
+        echo "<td><a href='../profile/index.php?id=$uid'>$fname $lname</a></td><td>$time</td><td><div class='comments'>$comment</div></td>";
 
         echo "</tr>\n";
 	}
@@ -324,7 +327,7 @@ function print_killboard($faction, $sort_array, $sort_by){
 				echo ("\t<img src='../images/avatars/tiny_human.png' width='50' />\n");
 			}
 				
-			echo    "\t<a class='kill_name' href='../profile/view_profile.php?id=" . $r['id'] . "' >".$r['fname']." ".$r['lname']."</a>\n";
+			echo    "\t<a class='kill_name' href='../profile/index.php?id=" . $r['id'] . "' >".$r['fname']." ".$r['lname']."</a>\n";
 			if( $r['gt_name']=='twrobel3' and $gt_name != 'twrobel3')
 				echo "\t<p class='skinny_lines'>I'm why we can't have nice things</p>\n </div>\n";
 			else{
@@ -389,7 +392,7 @@ function print_killboard($faction, $sort_array, $sort_by){
 				echo ("\t<img src='../images/avatars/tiny_zombie.png' width='50' />\n");
 			}
 					
-			echo	"\t<a class='kill_name' href='../profile/view_profile.php?id=" . $r["v_u.id"] . "' >".$r["v_u.fname"]." ".$r["v_u.lname"]."</a>\n";
+			echo	"\t<a class='kill_name' href='../profile/index.php?id=" . $r["v_u.id"] . "' >".$r["v_u.fname"]." ".$r["v_u.lname"]."</a>\n";
 					
 						$time = date('D H:i', strtotime($r["k.time"]));
 						$starve = date('D H:i', strtotime($r["v_u.starve_time"]));
@@ -416,7 +419,7 @@ function print_killboard($faction, $sort_array, $sort_by){
 							}
 							else
 							{
-								echo "<a class='killer_name' href='../profile/view_profile.php?id=" . $r["k_u.id"] . "' >" . $r["k_u.fname"] . " " . $r["k_u.lname"] . "</a>";
+								echo "<a class='killer_name' href='../profile/index.php?id=" . $r["k_u.id"] . "' >" . $r["k_u.fname"] . " " . $r["k_u.lname"] . "</a>";
 							}
 						}
 						else
