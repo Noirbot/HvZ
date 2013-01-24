@@ -43,7 +43,16 @@
 			</p>
 		</div>
 
-		<div class="mta1">
+       <div class="mta1">
+			<img src="images/admins/brad.jpg">
+			<h3>Brad VanSlyke</h3>
+            <h4 id="brad"> Glorious Head Admin - Defender of the Righteous - Slayer of the Wicked</h4>
+			<p>
+				This is my third game as an Admin, and my final game as a Head Admin.  I've been involved in every game except for the very first.  Leader of the Resistance, General of the Horde, Original Zombie, Hivemind, Survivor till the Finale, Previous Record Holder for Circle of Death, and as an all around take charge player I've done a lot within HvZ.  Now as a hopefully graduating 5th Year CS Major, it's my job to make sure everyone has a complete blast in this semester's game!
+			</p>
+		</div>
+       
+		<div class="mta0">
 			<img src="images/admins/PIMP_ADMIN.jpg">
 			<h3>Kersh</h3>
             <h4 id="kersh"> Runner - Master of All Truths - Pimp Admin</h4>
@@ -52,7 +61,7 @@
 			</p>
 		</div>
 		
-		<div class="mta0">
+		<div class="mta1">
 			<img src="images/admins/perry.jpg">
 			<h3>Perry Shuman</h3>
 			<h4 id="perry"> Benevolent Web Overlord - Dr. jQuery - Fedora Zombie Founder</h4>
@@ -61,7 +70,7 @@
 			</p>
 		</div>		
 		
-		<div class="mta1">
+		<div class="mta0">
 			<img src="images/admins/allen.jpg">
 			<h3>Allen Rawl</h3>
 			<h4 id="allen"> Keeper of the Peace - Master Yeller - Big Intimidating Admin</h4>
@@ -70,7 +79,7 @@
 			</p>
 		</div>
 
-		<div class="mta0">
+		<div class="mta1">
 			<img src="images/admins/wes.jpg">
 			<h3>Wes Hunt</h3>
 			<h4 id="wes"> God of Thunder Admin</h4>
@@ -80,16 +89,16 @@
 			
 		</div>
 		
-		<div class="mta1">
+		<div class="mta0">
 			<img src="images/admins/james.jpg">
 			<h3>James Ray</h3>
-			<h4 id="ray">God of Mischief Admin</h4>
+			<h4 id="ray"> God of Mischief Admin</h4>
 			<p>
 				Hola gente! James Ray, head lunatic of the group!  I've played this game 4 times now and this is my first time being an admin! I will probably be the one that laughs maniacally during missions and is always praying for the crazy to begin! Let the fun begin shall we?
 			</p>
 		</div>
 
-       <div class="mta0">
+       <div class="mta1">
            <img src="images/admins/kinsey.jpg">
            <h3>Kinsey Canova</h3>
            <h4 id="kinsey"> </h4>
@@ -99,16 +108,16 @@
 
        </div>
 
-       <div class="mta1">
+       <div class="mta0">
            <img src="images/admins/dewey.jpg">
            <h3>Dewey Holland</h3>
-           <h4 id="dewey">Waterjet Master - Ex-Runner Zombie</h4>
+           <h4 id="dewey"> Waterjet Master - Ex-Runner Zombie</h4>
            <p>
                Peace and Long Life. I am Dewey Holland. A 4th year Mechanical Engineer who has only played two games. However, I was the crazy guy who purposefully went zombie. The reason being to put on a good show and make the game more interesting. This is my first time as an admin. However, I still want to put on a good show. So don't fear the stun timer, don't be a jerk, and have some fun.
            </p>
        </div>
 
-       <div class="mta0">
+       <div class="mta1">
            <img src="images/admins/joe.jpg">
            <h3>Joe Russel</h3>
            <h4 id="joe"> </h4>
@@ -118,19 +127,19 @@
 
        </div>
        
-       <div class="mta1">
+       <div class="mta0">
            <img src="images/admins/colin.jpg">
            <h3>Colin Sanders</h3>
-           <h4 id="colin">The Colonel - Obsessive Email Checker</h4>
+           <h4 id="colin"> The Colonel - Obsessive Email Checker</h4>
            <p>
                If you ask me for chicken, I will stun you. If you are a human, I will escort you to Woodruff to get some. I've played one game, and this is my first time as an admin, but don't try and tell me sock ricochets don't count, and don't be around me if you aren't having fun. That is all. 
            </p>
        </div>
        
-		<div class="mta0">
+		<div class="mta1">
 			<img src="images/admins/vince.jpg">
 			<h3>Vince Pedicino</h3>
-			<h4 id = "vince">HvZ's Favorite Mad Professor</h4>
+			<h4 id = "vince"> HvZ's Favorite Mad Professor</h4>
 			<p>
 				Vince first joined the Sam Nunn School of International Affairs in 1995 as an undergraduate student. He currently is serving as the Graduate Advisor and provides student services support to all MSIA and PhD students as well as coordinates the graduate programs. Additionally, he manages the registration process for all International Affairs courses. Vince also teaches classes on European politics. Vince is thrilled and proud to advise HvZ. <br /><br />Vince received his Master's of International Affairs (2007) and his Bachelor of International Affairs (1999) from Georgia Tech.
 			</p>
