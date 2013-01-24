@@ -35,3 +35,4 @@ target/
 
 git.sublime-project
 git.sublime-workspace
+/images/.DS_Store
