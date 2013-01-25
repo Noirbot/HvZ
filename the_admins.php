@@ -52,7 +52,16 @@
 			</p>
 		</div>
        
-		<div class="mta0">
+       <div class="mta0">
+			<img src="images/admins/kake.jpg">
+			<h3>Kate Hoyt</h3>
+			<h4 id="kake"> (ex)Head Admin - Mission Critique-er - Plot Writer</h4>
+			<p>
+                Hallo! I used to be one of the ones that made the tough decisions, but now I've returned as a regular admin for my fifth game of HvZ. I do mission and plot writing, and during planning I remind the other admins when their ideas are too complicated. I help coordinate missions and you'll likely see me a lot. Remember to listen when your friendly admin-bot projects loud noises, it tends to be important!	
+           </p>
+		</div>
+       
+		<div class="mta1">
 			<img src="images/admins/PIMP_ADMIN.jpg">
 			<h3>Kersh</h3>
             <h4 id="kersh"> Runner - Master of All Truths - Pimp Admin</h4>
@@ -61,7 +70,7 @@
 			</p>
 		</div>
 		
-		<div class="mta1">
+		<div class="mta0">
 			<img src="images/admins/perry.jpg">
 			<h3>Perry Shuman</h3>
 			<h4 id="perry"> Benevolent Web Overlord - Dr. jQuery - Fedora Zombie Founder</h4>
@@ -70,7 +79,7 @@
 			</p>
 		</div>		
 		
-		<div class="mta0">
+		<div class="mta1">
 			<img src="images/admins/allen.jpg">
 			<h3>Allen Rawl</h3>
 			<h4 id="allen"> Keeper of the Peace - Master Yeller - Big Intimidating Admin</h4>
@@ -79,7 +88,7 @@
 			</p>
 		</div>
 
-		<div class="mta1">
+		<div class="mta0">
 			<img src="images/admins/wes.jpg">
 			<h3>Wes Hunt</h3>
 			<h4 id="wes"> God of Thunder Admin</h4>
@@ -89,26 +98,25 @@
 			
 		</div>
 		
-		<div class="mta0">
+		<div class="mta1">
 			<img src="images/admins/james.jpg">
 			<h3>James Ray</h3>
 			<h4 id="ray"> God of Mischief Admin</h4>
 			<p>
-				Hola gente! James Ray, head lunatic of the group!  I've played this game 4 times now and this is my first time being an admin! I will probably be the one that laughs maniacally during missions and is always praying for the crazy to begin! Let the fun begin shall we?
-			</p>
+                Hola gente! James Ray, head lunatic of the group!  I've played this game 4 times now and this is my second time being an admin! Or you may never see me which tends to be the trend, for I am like a shadow, no one worries about him. Well, know that I will be watching. Let the crazy begin!			</p>
 		</div>
 
-       <div class="mta1">
+       <div class="mta0">
            <img src="images/admins/kinsey.jpg">
            <h3>Kinsey Canova</h3>
-           <h4 id="kinsey"> </h4>
+           <h4 id="kinsey"> "Wandering but not lost" Admin</h4>
            <p>
                Howdy!  I have played one game previously, spending a reasonable amount of time on both sides.  This is my first time as an admin, so I look forward to helping things and whatever else run smoothly in addition to watching the events of game week play out.
            </p>
 
        </div>
 
-       <div class="mta0">
+       <div class="mta1">
            <img src="images/admins/dewey.jpg">
            <h3>Dewey Holland</h3>
            <h4 id="dewey"> Waterjet Master - Ex-Runner Zombie</h4>
@@ -117,26 +125,26 @@
            </p>
        </div>
 
-       <div class="mta1">
+       <div class="mta0">
            <img src="images/admins/joe.jpg">
-           <h3>Joe Russel</h3>
-           <h4 id="joe"> </h4>
+           <h3>Joe Russell</h3>
+           <h4 id="joe"> The Thousand-Titled Man - The Alpha - The Second - ...</h4>
            <p>
-               &Ecirc;l s&iacute;la erin l&ucirc; e-govaned v&icirc;n. I am Joe the Lightning Fist. Long has my family stood guard against the zombie hordes in the cold northlands. I have participated in HvZ twice and have now ascended to the realms of the Admins. I know the rules forwards and backwards and the gaps in between. I believe that if you die a hero, you rise again to see yourself become a zombie. See you in the field!
+               Elen s&iacute;la lumenn' omentielvo. I am Joe the Lightning Fist. Long has my family stood guard against the zombie hordes in the cold northlands. I have participated in HvZ twice and have now ascended to the realms of the Admins. I know the rules forwards and backwards and the gaps in between. I believe that if you die a hero, you rise again to see yourself become a zombie. See you in the field!
            </p>
 
        </div>
        
-       <div class="mta0">
+       <div class="mta1">
            <img src="images/admins/colin.jpg">
            <h3>Colin Sanders</h3>
            <h4 id="colin"> The Colonel - Obsessive Email Checker</h4>
            <p>
-               If you ask me for chicken, I will stun you. If you are a human, I will escort you to Woodruff to get some. I've played one game, and this is my first time as an admin, but don't try and tell me sock ricochets don't count, and don't be around me if you aren't having fun. That is all. 
+               If you ask me for chicken, I will stun you. If you are a human, I will follow you to Woodruff to get some. I've played one game, and this is my first time as an admin, but don't try and tell me sock ricochets don't count, and don't be around me if you aren't having fun. That is all. 
            </p>
        </div>
        
-		<div class="mta1">
+		<div class="mta0">
 			<img src="images/admins/vince.jpg">
 			<h3>Vince Pedicino</h3>
 			<h4 id = "vince"> HvZ's Favorite Mad Professor</h4>
