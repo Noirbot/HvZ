@@ -140,7 +140,7 @@
            <h3>Colin Sanders</h3>
            <h4 id="colin"> The Colonel - Obsessive Email Checker</h4>
            <p>
-               If you ask me for chicken, I will stun you. If you are a human, I will follow you to Woodruff to get some. I've played one game, and this is my first time as an admin, but don't try and tell me sock ricochets don't count, and don't be around me if you aren't having fun. That is all. 
+               If you ask me for chicken, I will stun you. If you are a human, you can follow me to Woodruff to get some. I've played one game, and this is my first time as an admin, but don't try and tell me sock ricochets don't count, and don't be around me if you aren't having fun. That is all. 
            </p>
        </div>
        
