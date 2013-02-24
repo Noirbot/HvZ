@@ -67,7 +67,7 @@
                 <li>...must wear their yellow bandanna on the upper arm or upper leg.  The bandanna must be visible from all angles.</li>
                 <li>...defend against zombies using <strong>approved</strong> stunning implements only</li>
                 <li>...must carry their Player ID at all times</li>
-                <li>...must attend (and check in with an admin) at <strong>two</strong> or more missions, including at least one mission on Thursday or Friday, to play in the finale as human</li>
+                <li>...must attend (and check in with an admin) at <strong>three</strong> or more missions, including at least one mission on Thursday or Friday, to play in the finale as human</li>
                 <li>...must be on campus for at least 8 hours of game play a day (if this might cause a problem, talk to an admin about your particular situation)</li>
                 <li>...can request the stun timer of a zombie, and the zombie must comply honestly</li>
                 <li>...can, while within safe zones, request "earshot": meaning zombies must give humans approximately 10-15 feet of space to provide privacy to discuss and plan</li>
@@ -75,7 +75,7 @@
             <h3>Zombies</h3>
             <ul>
                 <li>...wear yellow bandanna on forehead while in play and around their neck when stunned. Bandannas must be visible from all angles and must not be obstructed by hair, hats, scarves, etc.</li>				<li>...tag humans while in play using a firm touch</li>
-                <li>...can be stunned by approved stunning implements, after which the zombie is out of play for the duration of the current stun timer (default is 15 minutes)</li>
+                <li>...can be stunned by approved stunning implements, after which the zombie is out of play for the duration of the current stun timer (default is 10 minutes)</li>
                 <li>...must turn in a "feed" every 48 hours or "starve" (removed from play).  A tag feeds the tagging zombie and two other zombies.</li>
                 <li>...cannot use shields of any kind</li>
                 <li>...while stunned, may tell other zombies any information they knew <strong>before</strong> they were stunned.  Stunned zombies are otherwise treated as non-players</li>
@@ -117,6 +117,7 @@
                 <li>Check the website for mission details. There are usually two missions per day.  One in the middle of day during class, one during the evening</li>
                 <li>Missions drive the plot of the game, and successful completion of a mission usually results in a directly beneficial reward to the winning side</li>
                 <li>During missions, zombies are not allowed inside of mission-related buildings unless explicitly allowed by admins</li>
+                <li>Player meetings, which are held during sign-up week, may be counted as a maximum of one mission credit. See <a href="http://www.hvz.gatech.edu">homepage</a> for times and locations.</li>
             </ul>
             <h3 style="display:inline;">Play Zones and Times</h3>
             <a href="../images/playzone_map.png?phpMyAdmin=j%2Cut7v5h8%2CBIQWu%2CTPZMLMN1lAc" style="display:inline">MAP</a>
@@ -199,4 +200,3 @@
 </div>
 </body>
 </html>
-
