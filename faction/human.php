@@ -73,7 +73,7 @@
 
     function sendChatRefresh(faction, count) {
         newChatFaction = faction.toLowerCase() + "chat";
-        var url = "../scripts/chat_update.php?faction="+faction+"&count="+(count <= 0 ? "" : "LIMIT " + count);
+        var url = "../chat/chat_update.php?faction="+faction+"&count="+(count <= 0 ? "" : "LIMIT " + count);
         chatReq = new XMLHttpRequest();
         chatReq.open("GET", url, true);
         chatReq.onreadystatechange = refreshChat;

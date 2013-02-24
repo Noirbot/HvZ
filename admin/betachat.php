@@ -23,7 +23,7 @@
         var newChat = encodeURI(document.getElementById("chatarea").value);
         var audience = document.getElementById("audience").value;
         var request = new XMLHttpRequest();
-        request.open("GET", "twit.php?faction="+audience+"&comment="+newChat, false);
+        request.open("GET", "../chat/twit.php?faction="+audience+"&comment="+newChat, false);
         request.send(null);
         document.getElementById("chatarea").value = "";
         sendChatRefresh(audience.toUpperCase(), 0);
@@ -82,7 +82,7 @@
     
     function sendChatRefresh(faction, count) {
 	    newChatFaction = faction.toLowerCase() + "chat";
-        var url = "../scripts/chat_update.php?faction="+faction+"&isAdmin=true&count="+(count <= 0 ? "" : "LIMIT " + count);
+        var url = "../chat/chat_update.php?faction="+faction+"&isAdmin=true&count="+(count <= 0 ? "" : "LIMIT " + count);
 	    chatReq = new XMLHttpRequest();
 	    chatReq.open("GET", url, true);
 	    chatReq.onreadystatechange = refreshChat;
