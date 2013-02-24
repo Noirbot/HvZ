@@ -499,12 +499,6 @@ function quiz_open($game) {
     return (( time() >= strtotime($quiz_open_dates[$game]) && time() < strtotime($quiz_close_dates[$game])) ? true : false);
 }
 
-function point_controller($point) {
-    $res = mysql_query("SELECT owner FROM capture WHERE id=$point") or die(mysql_error());
-    $r = mysql_fetch_array($res);
-    return $r[0];
-}
-
 function print_ach_checks($user) {
 	global $gt_name, $ach_db;
 	
