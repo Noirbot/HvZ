@@ -35,13 +35,6 @@
         document.getElementById("chatarea").value = "";
         sendChatRefresh(audience.toUpperCase(), 10);
     }
-    
-    function chk_len(e){
-        if(e.value.length>140){
-            e.value = e.value.substr(0,140);
-            alert("Messages are capped at 140 characters");
-        }
-    }
 
     function convert_case(string) {
         return (string.substr(0,1).toUpperCase() + string.substr(1).toLowerCase());
@@ -73,7 +66,7 @@
 
     function sendChatRefresh(faction, count) {
         newChatFaction = faction.toLowerCase() + "chat";
-        var url = "../chat/chat_update.php?faction="+faction+"&count="+(count <= 0 ? "" : "LIMIT " + count);
+        var url = "../chat/chat_update.php?faction="+faction+"&count=10";
         chatReq = new XMLHttpRequest();
         chatReq.open("GET", url, true);
         chatReq.onreadystatechange = refreshChat;
@@ -154,7 +147,7 @@ HUMAN;
             ?>
         </div>
         <input type="hidden" name="faction" id="audience" value="human"/>
-        <textarea name="comment" onkeyup='chk_len(this)' class="twitbox" id="chatarea"></textarea>
+        <textarea name="comment" class="twitbox" id="chatarea"></textarea>
         <input type="button" onclick="post()" value="Post" style="display:inline; vertical-align: top;"/>
         <input type="button" onclick="updateRequest(10)" value="Update" style="display:inline; vertical-align: top;"/>
     </div>  

@@ -65,7 +65,7 @@
 
     function sendChatRefresh(faction, count) {
         newChatFaction = faction.toLowerCase() + "chat";
-        var url = "../chat/chat_update.php?faction="+faction+"&count="+(count <= 0 ? "" : "LIMIT " + count);
+        var url = "../chat/chat_update.php?faction="+faction+"&count=10");
         chatReq = new XMLHttpRequest();
         chatReq.open("GET", url, true);
         chatReq.onreadystatechange = refreshChat;
@@ -148,7 +148,7 @@ ZOMBIE;
         </div>
 
         <input type="hidden" name="faction" id="audience" value="zombie"/>
-        <textarea name="comment" onkeyup='chk_len(this)' class="twitbox" id="chatarea"></textarea>
+        <textarea name="comment" class="twitbox" id="chatarea"></textarea>
         <input type="button" onclick="post()" value="Post" style="display:inline; vertical-align: top;"/>
         <input type="button" onclick="updateRequest(10)" value="Update" style="display:inline; vertical-align: top;"/>
     </div>  
