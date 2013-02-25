@@ -14,7 +14,7 @@
         "spring2013" => "sextowel"
     );
 
-    $gt_name = $_ENV["REMOTE_USER"] ? $_ENV["REMOTE_USER"] : "";
+    $gt_name = isset($_ENV["REMOTE_USER"]) ? $_ENV["REMOTE_USER"] : "";
     $_SESSION["gtname"] = $gt_name;
 
     //$db = mysql_connect("web-db1.gatech.edu:3306",$db_users[$current_game],$db_pass[$current_game]) or die("DBC Remote Fail");
