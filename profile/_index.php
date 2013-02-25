@@ -48,7 +48,7 @@
             $optional .= ", faction='$faction'";
 
 
-        $query = "UPDATE users SET slogan='$slogan', signed_up='$signed_up', rules_quiz='$rules_quiz', starve_time='$starve_time' $optional WHERE id='$id'";
+        $query = "UPDATE users SET slogan='$slogan', signed_up='$signed_up', rules_quiz='$rules_quiz' $optional WHERE id='$id'";
         $db->query($query) or die($db->error);
 	}
 
