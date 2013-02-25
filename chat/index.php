@@ -76,7 +76,6 @@
 	    chatReq.open("GET", url, true);
 	    chatReq.onreadystatechange = refreshChat;
 	    chatReq.send(null);
-	    //alert("Sent To: " + url);
     }
     
     function refreshChat() {
