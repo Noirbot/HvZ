@@ -39,7 +39,7 @@
 			<h3>Scuba</h3>
 			<h4 id="scuba"> Intern - Mission Critiquer - General Angry Scuba</h4>
 			<p>
-				As the oldest person on the team this makes me the most wise, right? No, darn. So I have been Adminning for a few games now so I know how this whole deal works. I help with some of the mission writing for both side. I also have become the role player for some of the mission. I am here to help the zombies win... wait that's not right. I am here to help the game run as smoothly as possible which can cause some loud noises to emanate from my direction at points.
+				As the oldest person on the team this makes me the most wise, right? No, darn. So I have been Adminning for a few games now, so I know how this whole deal works. I help with some of the mission writing for both sides. I also have become the role player for some of the missions. I am here to help the zombies win... wait that's not right. I am here to help the game run as smoothly as possible which can cause some loud noises to emanate from my direction at points.
 			</p>
 		</div>
 
@@ -66,7 +66,7 @@
 			<h3>Kersh</h3>
             <h4 id="kersh"> Runner - Master of All Truths - Pimp Admin</h4>
 			<p>
-				Don't ask me no questions, and I won't tell you no lies.
+				Why hello everyone! Kersh is the name. I am here to make sure that everyone has a fun and exciting week of resisting, nomming, and overall fighting the good fight. This will be my third time adminning, so I do know a thing or two about the game. Feel free to approach me in any wide open and easily accessible area that is in play for nice long conversations about how to be a successful human player. Zombies are also welcome to BRAINS BRAINS BRAINS! And remember kids, <h1><center>DON'T BE A JERK!</center></h1>
 			</p>
 		</div>
 		
@@ -84,7 +84,7 @@
 			<h3>Allen Rawl</h3>
 			<h4 id="allen"> Keeper of the Peace - Master Yeller - Big Intimidating Admin</h4>
 			<p>
-				Hello everyone! This is my second game as an admin, but I have played two fall games and spectated last spring. I have experience in dealing with large crowds, so I am looking forward to making sure nothing stupid happens because, trust me, it probably will.
+				Hello everyone! This is my third game as an admin, but I have played two fall games and spectated last spring. I have experience in dealing with large crowds, so I am looking forward to making sure nothing stupid happens because, trust me, it probably will.
 			</p>
 		</div>
 
@@ -140,7 +140,7 @@
            <h3>Colin Sanders</h3>
            <h4 id="colin"> The Colonel - Obsessive Email Checker</h4>
            <p>
-               If you ask me for chicken, I will stun you. If you are a human, you can follow me to Woodruff to get some. I've played one game, and this is my first time as an admin, but don't try and tell me sock ricochets don't count, and don't be around me if you aren't having fun. That is all. 
+               If you ask me for chicken, I will stun you. If you are a human, I will follow you to Woodruff to get some. I've played one game, and this is my first time as an admin, but don't try and tell me sock ricochets don't count, and don't be around me if you aren't having fun. That is all. 
            </p>
        </div>
        
