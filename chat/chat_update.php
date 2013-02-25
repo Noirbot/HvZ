@@ -30,7 +30,7 @@ if (strcasecmp($faction, "all") == 0 || strcasecmp($faction, $user_faction) == 0
 			//if(strcasecmp($user_faction, "admin") == 0)
 			//	echo "<td><input type='button' value='X' style='float:left; color:red; border:none; font-size:10px; line-height:10px;' onclick='remove_chat($id, \"$faction\")'></td>";
 	
-			echo "<td><a href='../profile/view_profile.php?id=$uid'>$fname $lname</a></td><td>$time</td><td><div class='comments'>$comment</div></td>";
+			echo "<td><a href='../profile/index.php?id=$uid'>$fname $lname</a></td><td>$time</td><td><div class='comments'>$comment</div></td>";
 	
 			echo "</tr>\n";
 		}
