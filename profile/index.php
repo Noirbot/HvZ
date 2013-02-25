@@ -181,7 +181,7 @@ EDIT;
                         else
                             echo ("<option value=''>Default</option>");
     
-                        $query = "SELECT `adata`.`id` AS `id`, `adata`.`name` AS `name`, `adata`.`avatar` as avatar FROM `ach_data` AS `adata` RIGHT OUTER JOIN (SELECT * FROM `ach_gets` WHERE `user` = '$gt_name') AS `agets` ON `adata`.`id` = `agets`.`ach_id` ORDER BY `adata`.`category`, `adata`.`id`";
+                        $query = "SELECT `adata`.`id` AS `id`, `adata`.`name` AS `name`, `adata`.`avatar` as avatar FROM `ach_data` AS `adata` RIGHT OUTER JOIN (SELECT * FROM `ach_gets` WHERE `user` = '$r->gt_name') AS `agets` ON `adata`.`id` = `agets`.`ach_id` ORDER BY `adata`.`category`, `adata`.`id`";
     
                         $result = $ach_db->query($query);
     
@@ -289,7 +289,7 @@ DEAD;
                             <h4>Achievements</h4>
                             <dl>
 ACH;
-                        $query = "SELECT `adata`.`id` AS `id`, `adata`.`name` AS `name`, `adata`.`category` AS `category`, `adata`.`description` AS `desc`, `agets`.`time` AS `time` FROM `ach_data` AS `adata` RIGHT OUTER JOIN (SELECT * FROM `ach_gets` WHERE `user` = '$other_gt_name') AS `agets` ON `adata`.`id` = `agets`.`ach_id` ORDER BY `adata`.`category`, `adata`.`id`";
+                        $query = "SELECT `adata`.`id` AS `id`, `adata`.`name` AS `name`, `adata`.`category` AS `category`, `adata`.`description` AS `desc`, `agets`.`time` AS `time` FROM `ach_data` AS `adata` RIGHT OUTER JOIN (SELECT * FROM `ach_gets` WHERE `user` = '$r->gt_name') AS `agets` ON `adata`.`id` = `agets`.`ach_id` ORDER BY `adata`.`category`, `adata`.`id`";
                         
                         $result = $ach_db->query($query);
                         
