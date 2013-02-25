@@ -91,11 +91,7 @@
     }
     
     function refreshChat() {
-	    if (chatReq.readyState == 4)
-	    {
-            document.getElementById(newChatFaction).innerHTML = chatReq.responseText;
-		    toChatBottom();
-	    }
+	    location.reload();
     }
     
     function updateRequest(count) {
