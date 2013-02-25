@@ -328,8 +328,8 @@ function print_killboard($faction, $sort_array, $sort_by){
 			}
 				
 			echo    "\t<a class='kill_name' href='../profile/index.php?id=" . $r['id'] . "' >".$r['fname']." ".$r['lname']."</a>\n";
-			if( $r['gt_name']=='twrobel3' and $gt_name != 'twrobel3')
-				echo "\t<p class='skinny_lines'>I'm why we can't have nice things</p>\n </div>\n";
+			if( $r['gt_name']=='iwiden3' and $gt_name != 'iwiden3')
+				echo "\t<p class='skinny_lines'>Quieres los logros? Pues ganalos.</p>\n </div>\n";
 			else{
 				echo "\t<p class='skinny_lines'>".$r['slogan']."</p>\n".
 					  "</div>\n";
