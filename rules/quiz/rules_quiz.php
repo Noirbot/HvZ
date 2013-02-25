@@ -44,7 +44,7 @@
 		<?php
 			if (quiz_open($current_game) || $faction == "admin")
             {
-                echo ("<p>The rules document has been updated and a few changes have been made. Please take the following test to show you have read the new rules and understand them.</p>");
+                echo ("<p><strong>The rules document has been updated and a few changes have been made to both Stun Timers and Mission Requirements.</strong> Please take the following test to show you have read the new rules and understand them.</p>");
             }
             else
             {
