@@ -3,13 +3,14 @@ require("../scripts/lib.php");
 
 $faction = verify($gt_name);
 
-if (is_numeric($_GET['id']))
-    $id = $_GET['id'];
-else
-    if (isset($_GET["id"]))
+if (isset($_GET['id'])) {
+    if (!is_numeric($_GET["id"]))
         header("Location: http://www.youtube.com/watch?v=oHg5SJYRHA0");
     else
-        $id = $_SESSION["id"];
+        $id = $_GET["id"];
+}
+else
+    $id = $_SESSION['id'];
 
 $quizzed = taken_quiz($gt_name);
 if ($quizzed == False)
