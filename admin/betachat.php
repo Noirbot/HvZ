@@ -82,12 +82,11 @@
     
     function sendChatRefresh(faction, count) {
 	    newChatFaction = faction.toLowerCase() + "chat";
-        var url = "../chat/chat_update.php?faction="+faction+"&isAdmin=true&count="+(count <= 0 ? "" : "LIMIT " + count);
+        var url = "../chat/chat_update.php?faction="+faction;
 	    chatReq = new XMLHttpRequest();
 	    chatReq.open("GET", url, true);
 	    chatReq.onreadystatechange = refreshChat;
 	    chatReq.send(null);
-	    //alert("Sent To: " + url);
     }
     
     function refreshChat() {
@@ -177,8 +176,8 @@ ADMIN;
                 ?>
             </div>
             <input type="hidden" name="faction" id="audience" value="all"/>
-            <textarea name="comment" onkeyup='chk_len(this)' class="twitbox" id="chatarea"></textarea>
-            <input type="button" onclick="post()" value="Post" style="display:inline; vertical-align: top;"/>
+            <textarea name="comment" onkeyup="if (event.keyCode == 13) document.getElementById('subbtn').click()" class="twitbox" id="chatarea"></textarea>
+            <input type="button" id="subbtn" onclick="post()" value="Post" style="display:inline; vertical-align: top;"/>
             <input type="button" onclick="updateRequest(0)" value="Update" style="display:inline; vertical-align: top;"/>
         </div>
         <div class="footer"><p></p></div>
