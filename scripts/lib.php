@@ -352,14 +352,14 @@ function print_killboard($faction, $sort_array, $sort_by){
 			$sort_string ="v_u.kills $kill_sort, v_u.starve_time $starve_sort, v_u.lname $name_sort, v_u.fname $name_sort ";
 
 		if($oz_flushed){
-			$query = "SELECT k_u.fname, k_u.lname, v_u.fname, v_u.lname, v_u.starve_time, v_u.kills, v_u.slogan, k.time, v_u.gt_name, k_u.gt_name, v_u.id, k_u.id, v_u.avatar
+			$query = "SELECT k_u.fname AS kFname, k_u.lname AS kLname, v_u.fname AS vFname, v_u.lname AS vLname, v_u.starve_time AS vTime, v_u.kills AS vKills, v_u.slogan AS vSlogan, k.time AS kTime, v_u.gt_name AS vGTname, k_u.gt_name AS kGTname, v_u.id AS vID, k_u.id AS kID, v_u.avatar AS vAvatar
 				FROM kills k
 				JOIN users k_u ON k.killer = k_u.gt_name
 				JOIN users v_u ON k.victim = v_u.gt_name 
 				WHERE v_u.fname != 'Feed' AND v_u.lname != 'Feed' 
 				ORDER BY $sort_string";
 		} else {
-			$query = "SELECT k_u.fname, k_u.lname, v_u.fname, v_u.lname, v_u.starve_time, v_u.kills, v_u.slogan, k.time, v_u.gt_name, k_u.gt_name, v_u.id, k_u.id, v_u.avatar
+			$query = "SELECT k_u.fname AS kFname, k_u.lname AS kLname, v_u.fname AS vFname, v_u.lname AS vLname, v_u.starve_time AS vTime, v_u.kills AS vKills, v_u.slogan AS vSlogan, k.time AS kTime, v_u.gt_name AS vGTname, k_u.gt_name AS kGTname, v_u.id AS vID, k_u.id AS kID, v_u.avatar AS vAvatar
 				FROM kills AS k
 				JOIN users AS k_u ON k.killer = k_u.gt_name
 				JOIN users AS v_u ON k.victim = v_u.gt_name 
@@ -383,21 +383,21 @@ function print_killboard($faction, $sort_array, $sort_by){
 		while( $r = $kb_res->fetch_assoc()){
 			echo	"<div class='zombie_killboard_item'>\n";
 				
-			if ($r["v_u.avatar"] != "")
+			if ($r["vAvatar"] != "")
 			{
-				echo ("\t<img src='../images/avatars/" . $r['v_u.avatar'] . "' width='50' />\n");
+				echo ("\t<img src='../images/avatars/" . $r['vAvatar'] . "' width='50' />\n");
 			}
 			else
 			{
 				echo ("\t<img src='../images/avatars/tiny_zombie.png' width='50' />\n");
 			}
 					
-			echo	"\t<a class='kill_name' href='../profile/index.php?id=" . $r["v_u.id"] . "' >".$r["v_u.fname"]." ".$r["v_u.lname"]."</a>\n";
+			echo	"\t<a class='kill_name' href='../profile/index.php?id=" . $r["vID"] . "' >".$r["vFname"]." ".$r["vLname"]."</a>\n";
 					
-						$time = date('D H:i', strtotime($r["k.time"]));
-						$starve = date('D H:i', strtotime($r["v_u.starve_time"]));
-						echo "\t<h3><strong>".$r["v_u.kills"]."</strong> Kill";
-						echo ($r["v_u.kills"]==1) ? "":"s";
+						$time = date('D H:i', strtotime($r["kTime"]));
+						$starve = date('D H:i', strtotime($r["vTime"]));
+						echo "\t<h3><strong>".$r["vKills"]."</strong> Kill";
+						echo ($r["vKills"]==1) ? "":"s";
 						echo "!</h3>\n";
 						echo "<p style='margin:0; padding:0; padding-left:5px; line-height:12px; font-size:12px;'>";
 						echo "&nbsp;&nbsp;&nbsp;<strong>Killed by:</strong> ";
@@ -407,7 +407,7 @@ function print_killboard($faction, $sort_array, $sort_by){
 							
 							foreach($ozs as $oz_id)
 							{
-								if ($r["k_u.gt_name"] == $oz_id)
+								if ($r["kGTname"] == $oz_id)
 								{
 									$killed_by_oz = true;
 								}
@@ -419,21 +419,21 @@ function print_killboard($faction, $sort_array, $sort_by){
 							}
 							else
 							{
-								echo "<a class='killer_name' href='../profile/index.php?id=" . $r["k_u.id"] . "' >" . $r["k_u.fname"] . " " . $r["k_u.lname"] . "</a>";
+								echo "<a class='killer_name' href='../profile/index.php?id=" . $r["kID"] . "' >" . $r["kFname"] . " " . $r["kLname"] . "</a>";
 							}
 						}
 						else
 						{
-							echo $r["k_u.fname"] . " " . $r["k_u.lname"];
+							echo $r["kFname"] . " " . $r["kLname"];
 						}
 						echo "<br>&nbsp;&nbsp;&nbsp;<strong>On</strong> $time<br>";
 						echo "&nbsp;&nbsp;&nbsp;<strong>Starves:</strong> $starve<br>";
 						echo "</p>";
 						echo "<p>";
-						if( $r["v_u.gt_name"]=='twrobel3' and $gt_name != 'twrobel3')
+						if( $r["vGTname"]=='twrobel3' and $gt_name != 'twrobel3')
 							echo "\t<p class='skinny_lines'>I'm why we can't have nice things</p>\n </div>\n";
 						else{
-							echo "\t<p class='skinny_lines'>".$r["v_u.slogan"]."</p>\n";
+							echo "\t<p class='skinny_lines'>".$r["vSlogan"]."</p>\n";
 							echo "</div>\n";
 						}
 		}

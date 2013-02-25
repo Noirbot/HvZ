@@ -98,6 +98,17 @@ if ($quizzed == False)
             document.getElementById("generalach").className = "hide";
             document.getElementById(faction).className = "show";
         }
+        
+        function unzombify(id)
+        {
+            alert("Raising Dead!");
+            
+            var url = "../admin/revive.php?id=" + id;
+            request.open("GET", url, true);
+            request.send(null);
+            
+            location.reload(true);
+        }
 ADMIN;
         ?>
     </script>
@@ -249,6 +260,10 @@ EDIT;
                                 <td><input type="submit" value="Save Changes"/></td>
                             </tr>
                             </table>
+                            </form>
+                            <form action="../admin/revive.php" method="get">
+                                <input type="hidden" name="id" value="$r->id"/>
+                                <input type="submit" value="Resurrect"/>
                             </form>
 EDIT;
                     } else {
