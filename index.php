@@ -36,7 +36,8 @@
             <img src="images/NumaNumaHuman.jpg" alt="RUN!" style="float: right; margin-left:10px;">
             <h2>GT Humans vs Zombies</h2>
 			<p>Welcome to the largest game on Georgia Tech's campus, Humans vs Zombies.</p>
-			<p><strong>Spring game will be March 4-9, sign up week Feb 25-March 4.</strong></p>
+			<p><strong>Spring game will be March 4-9, sign ups will be open from Feb 25-March 4.</strong></p>
+            <p><strong>Sign up now by taking the <a href="/rules/quiz/rules_quiz.php">Rules Quiz</a></strong></p>
             <p>Come out to one of our player meeetings:</p>
             <ul>
                 <li>Feb 26th - 7pm - SC Room 332</li>
