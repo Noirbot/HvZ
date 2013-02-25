@@ -3,7 +3,7 @@
 
 	$faction = verify($gt_name);
 
-    if (is_numeric($_POST['id']))
+    if (isset($_POST['id']) && is_numeric($_POST['id']))
 		$id = $_POST['id'];
 	else
 		header("Location: http://www.youtube.com/watch?v=oHg5SJYRHA0");
