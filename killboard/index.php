@@ -39,7 +39,7 @@
 <head>
 <title>Humans vs Zombies - Georgia Tech</title>
 <link type="text/css" rel="stylesheet" href="/css/base.css">
-
+<script src="../scripts/list.min.js"></script>
 
 </head>
 <body>
@@ -76,22 +76,33 @@
 			<div style="float:right"> 
 				Sort by: 
 					<input type="hidden" name="HSort" value="" />
-					<input type="button" value="Name"  onclick="document.sort_form.HSort.value='lname'; document.sort_form.submit()" />
+					<!--<input type="button" value="Name"  onclick="document.sort_form.HSort.value='lname'; document.sort_form.submit()" />-->
+					<input type="button" class="sort" data-sort="name">Name</span>
 			</div><br>
 			<?php
 				$res = $db->query("SELECT * FROM users WHERE faction='HUMAN' AND rules_quiz = 1 AND fname != 'Feed' AND lname != 'Feed'");
 				$r = $res->num_rows;
 			?>
 			<h2>Humans (<?php echo $r ?>)</h2>
-				<?php print_killboard("HUMAN", $_SESSION['Hsort'], "lname"); ?>
+				<ul class="list">
+					<?php print_killboard("HUMAN", $_SESSION['Hsort'], "lname"); ?>
+				</ul>
+
 		</div>
+		<script type="text/javascript">
+					var options = {valueNames:['name']};
+					var humanSort = new List('human_list',options);
+				</script>
 		 <div id="zombie_list">
 		 	<div style="float:right">
 				Sort by: 
-					<input type="hidden" name="ZSort" value="" />
+					<!--<input type="hidden" name="ZSort" value="" />
 					<input type="button" value="Name"  onclick="document.sort_form.ZSort.value='lname'; document.sort_form.submit()" />
 					<input type="button" value="Kills" onclick="document.sort_form.ZSort.value='kills'; document.sort_form.submit()" /> 
-					<input type="button" value="Hungriest" onclick="document.sort_form.ZSort.value='starve_time'; document.sort_form.submit()"/>
+					<input type="button" value="Hungriest" onclick="document.sort_form.ZSort.value='starve_time'; document.sort_form.submit()"/>-->
+					<input type="button" class="sort" data-sort="name">Name</span>
+					<input type="button" class="sort" data-sort="kills">Kills</span>
+					<input type="button" class="sort" data-sort="starve_time">Starve Time</span>
 			</div><br>
 
 			<?php
@@ -99,8 +110,15 @@
 				$r = $res->num_rows;
 			?>
 			<h2>Zombies (<?php echo $r ?>)</h2>
-				<?php print_killboard("ZOMBIE", $_SESSION['Zsort'], $sort_by); ?>
+				<ul class="list">
+					<?php print_killboard("ZOMBIE", $_SESSION['Zsort'], $sort_by); ?>
+				</ul>
+				
 		</div>
+		<script type="text/javascript">
+					var options = {valueNames:['name','kills','starve_time']};
+					var zombieSort = new List('zombie_list', options);
+				</script>
 		</form>
      <div class="footer"><p></p></div>
       
