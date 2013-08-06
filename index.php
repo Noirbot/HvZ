@@ -36,17 +36,7 @@
             <img src="images/NumaNumaHuman.jpg" alt="RUN!" style="float: right; margin-left:10px;">
             <h2>GT Humans vs Zombies</h2>
 			<p>Welcome to the largest game on Georgia Tech's campus, Humans vs Zombies.</p>
-			<p><strong>Spring game will be March 4-9, sign ups will be open from Feb 25-March 4.</strong></p>
-            <p><strong>Sign up now by taking the <a href="/rules/quiz/rules_quiz.php">Rules Quiz</a></strong></p>
-            <p>Come out to one of our player meeetings:</p>
-            <ul>
-                <li>Feb 26th - 7pm - SC Room 332</li>
-                <li>Feb 27th - 7pm - SC Room 301</li>
-                <li>Feb 28th - 7pm - SC Room 301</li>
-                <li>Mar 1st - 6pm - SC Room 332</li>
-                <li>Mar 2nd - 3pm - SC Room 332</li>
-                <li>Mar 3rd - 7pm - SC Room 301</li>
-            </ul>
+			<p><strong>Our Fall game will be September 16-22, and sign ups will be open from September 9-16.</strong></p>
       <br />
 			<p>If you're new to the game, welcome! Humans vs Zombies is a large game similar to tag, played by hundreds of students on campus every semester. Every player signs up and receives a yellow bandanna, which they wear on the upper arm to denote themselves as human from the start of the week. One player appears human but is actually the Original Zombie, and is the start of the zombie apocalypse. Zombies, denoted by putting their bandanna on the forehead when in play and around their neck when stunned, tag humans to increase the zombie population. Humans can defend themselves by stunning zombies with socks or marshmallows, taking the zombies out of play for a limited time.</p>
 			<p>The game is in play from 7 AM to 11 PM from the start day to the finale, unless otherwise noted by the administrators who run the game. All indoor areas are safe zones or no play zones, but if you are outdoors you are in danger! Missions occur throughout the week to help either side gain information or rewards, and to keep players active. Humans must have completed two missions to play in the finale on the final game day.</p>

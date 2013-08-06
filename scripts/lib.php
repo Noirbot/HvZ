@@ -5,13 +5,15 @@
     	"achievements" => "achieve",
         "spring2012" => "Spr12",
         "fall2012" => "Fall12",
-        "spring2013" => "Spr13"
+        "spring2013" => "Spr13",
+        "fall2013" => "Fall13"
     );
     $db_pass = array(
     	"achievements" => "legopibb",
         "spring2012" => "pandapool",
         "fall2012" => "legopibb",
-        "spring2013" => "sextowel"
+        "spring2013" => "sextowel",
+        "fall2013" => "badgermoaner"
     );
 
     $gt_name = isset($_ENV["REMOTE_USER"]) ? $_ENV["REMOTE_USER"] : "";
@@ -34,20 +36,23 @@
 	$oz_flush_dates = array(
 		"spring2012" => "27 February 2012 23:00",
 		"fall2012" => "17 September 2012 23:00",
-		"spring2013" => "4 March 2013 23:00"
+		"spring2013" => "4 March 2013 23:00",
+		"fall2013" => "16 September 2013 23:00"
 		);
 	$oz_flushed = false;
 
     $quiz_open_dates = array(
         "spring2012" => "28 February 2012",
         "fall2012" => "10 September 2012",
-        "spring2013" => "25 February 2013"
+        "spring2013" => "25 February 2013",
+        "fall2013" => "9 September 2013"
     );
 
     $quiz_close_dates = array(
         "spring2012" => "28 February 2012 17:00",
         "fall2012" => "17 September 2012 17:00",
-        "spring2013" => "4 March 2013 17:00"
+        "spring2013" => "4 March 2013 17:00",
+		"fall2013" => "16 September 2013 17:00"
     );
 
 	if(!isset($_SESSION['sorted'])){
