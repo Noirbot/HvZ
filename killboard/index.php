@@ -1,6 +1,6 @@
 <?php 
-	require("../scripts/lib.php"); 
-
+	//require("../scripts/lib.php"); 
+	require("lib.php");
 	$faction = verify($gt_name);
 	
 	$quizzed = taken_quiz($gt_name);
@@ -75,9 +75,9 @@
 		<div id="human_list">
 			<div style="float:right"> 
 				Sort by: 
-					<input type="hidden" name="HSort" value="" />
-					<!--<input type="button" value="Name"  onclick="document.sort_form.HSort.value='lname'; document.sort_form.submit()" />-->
-					<input type="button" class="sort" data-sort="name">Name</span>
+					<!--<input type="hidden" name="HSort" value="" />
+					<input type="button" value="Name"  onclick="document.sort_form.HSort.value='lname'; document.sort_form.submit()" />-->
+					<input type="button" value="Name" class="sort" data-sort="name" />
 			</div><br>
 			<?php
 				$res = $db->query("SELECT * FROM users WHERE faction='HUMAN' AND rules_quiz = 1 AND fname != 'Feed' AND lname != 'Feed'");
@@ -100,9 +100,9 @@
 					<input type="button" value="Name"  onclick="document.sort_form.ZSort.value='lname'; document.sort_form.submit()" />
 					<input type="button" value="Kills" onclick="document.sort_form.ZSort.value='kills'; document.sort_form.submit()" /> 
 					<input type="button" value="Hungriest" onclick="document.sort_form.ZSort.value='starve_time'; document.sort_form.submit()"/>-->
-					<input type="button" class="sort" data-sort="name">Name</span>
-					<input type="button" class="sort" data-sort="kills">Kills</span>
-					<input type="button" class="sort" data-sort="starve_time">Starve Time</span>
+					<input type="button" value="Name" class="sort" data-sort="name" />
+					<input type="button" value="Kills" class="sort" data-sort="kills" />
+					<input type="button" value="Hungriest" class="sort" data-sort="starve_time" />
 			</div><br>
 
 			<?php
