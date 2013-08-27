@@ -1,6 +1,6 @@
 <?php
 	session_start();
-    $current_game = "spring2013";
+    $current_game = "fall2013";
     $db_users = array(
     	"achievements" => "achieve",
         "spring2012" => "Spr12",
