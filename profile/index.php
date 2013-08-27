@@ -329,25 +329,16 @@ ACH;
                     if ($r->faction == "HUMAN" && $is_owner) {
                         echo 	"\t\t<ul>\n".
 			                    "\t\t\t<li><strong>Missions Completed:</strong>";
-				        if ($r->early_mission >= 1 or $r->late_mission >= 1)
-				       	{
-					       	if ($r->early_mission >= 1)
-					       	{
-						       	echo (" Pre-Thursday");
-					       	}
-					       	if ($r->early_mission >= 1 and $r->late_mission >= 1)
-					       	{
-						       	echo (" and");
-					       	}
-					       	if ($r->late_mission >= 1)
-					       	{
-						       	echo (" Post-Thursday");
-					       	}
-				       	}
-				       	else
-				       	{
-					       	echo (" None");
-				       	}
+			            echo (" " . $r->early_mission . " Pre-Thursday mission");
+						if ($r->early_mission != 1)
+					    {
+					        echo ("s");
+					    }
+						echo (" and " . $r->late_mission . " Post-Thursday mission");
+					    if ($r->late_mission != 1)
+					    {
+						   	echo ("s");
+					    }
 				        echo    "</li>\n".
 			                    "\t\t</ul>";
                         $name = $r->fname . " " . $r->lname;
