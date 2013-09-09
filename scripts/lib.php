@@ -332,12 +332,11 @@ function print_killboard($faction, $sort_array, $sort_by){
 				echo ("\t<img src='../images/avatars/tiny_human.png' width='50' />\n");
 			}
 				
-			echo    "\t<a class='kill_name' href='../profile/index.php?id=" . $r['id'] . "' ><span class="name">".$r['fname']." ".$r['lname']."</span></a>\n";
+			echo ("\t<a class='kill_name' href='../profile/index.php?id=" . $r['id'] . "' ><span class='name'>" . $r['fname'] . " " . $r['lname'] . "</span></a>\n");
 			if( $r['gt_name']=='iwiden3' and $gt_name != 'iwiden3')
-				echo "\t<p class='skinny_lines'>Quieres los logros? Pues ganalos.</p>\n </div>\n";
+				echo("\t<p class='skinny_lines'>Quieres los logros? Pues ganalos.</p>\n </div>\n");
 			else{
-				echo "\t<p class='skinny_lines'>".$r['slogan']."</p></ul>\n".
-					  "</li></div>\n";
+				echo("\t<p class='skinny_lines'>".$r['slogan']."</p></ul>\n"."</li></div>\n");
 			}
 		}	
 	}
@@ -397,11 +396,11 @@ function print_killboard($faction, $sort_array, $sort_by){
 				echo ("\t<img src='../images/avatars/tiny_zombie.png' width='50' />\n");
 			}
 					
-			echo	"\t<a class='kill_name' href='../profile/index.php?id=" . $r["vID"] . "' ><span class="name">".$r["vFname"]." ".$r["vLname"]."</span></a>\n";
+			echo	"\t<a class='kill_name' href='../profile/index.php?id=" . $r["vID"] . "' ><span class='name'>".$r["vFname"]." ".$r["vLname"]."</span></a>\n";
 					
 						$time = date('D H:i', strtotime($r["kTime"]));
 						$starve = date('D H:i', strtotime($r["vTime"]));
-						echo "\t<h3><strong><span class="kills">".$r["vKills"]."</span></strong> Kill";
+						echo "\t<h3><strong><span class='kills'>".$r["vKills"]."</span></strong> Kill";
 						echo ($r["vKills"]==1) ? "":"s";
 						echo "!</h3>\n";
 						echo "<p style='margin:0; padding:0; padding-left:5px; line-height:12px; font-size:12px;'>";
@@ -432,7 +431,7 @@ function print_killboard($faction, $sort_array, $sort_by){
 							echo $r["kFname"] . " " . $r["kLname"]."</span>";
 						}
 						echo "<br>&nbsp;&nbsp;&nbsp;<strong>On</strong> $time<br>";
-						echo "&nbsp;&nbsp;&nbsp;<strong>Starves:</strong> <span class="starve_time">$starve<br></span>";
+						echo "&nbsp;&nbsp;&nbsp;<strong>Starves:</strong> <span class='starve_time'>$starve<br></span>";
 						echo "</p>";
 						echo "<p>";
 						if( $r["vGTname"]=='twrobel3' and $gt_name != 'twrobel3')

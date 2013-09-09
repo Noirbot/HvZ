@@ -1,6 +1,5 @@
 <?php 
-	//require("../scripts/lib.php"); 
-	require("lib.php");
+	require("../scripts/lib.php"); 
 	$faction = verify($gt_name);
 	
 	$quizzed = taken_quiz($gt_name);
