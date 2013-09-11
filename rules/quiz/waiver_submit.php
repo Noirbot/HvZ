@@ -6,9 +6,6 @@
         die();
     }
 
-    /*if (!quiz_open($current_game) && $gt_name != "pshuman3")
-        die("Sorry, signups have closed for the Spring 2012 game");*/
-
     $name = $_POST["name"];
     $gtname = $_POST["gtname"];
     $gtid = $_POST["gtid"];

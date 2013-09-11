@@ -32,7 +32,7 @@
     </div>
 
    <div id="content">
-		<h2>GT Humans vs Zombies - Spring 2012</h2>
+		<h2>GT Humans vs Zombies - Fall 2013</h2>
 		<div style="padding-left:15px;">
 			<?php
 			if (quiz_open($current_game))
