@@ -213,7 +213,7 @@ input, textarea, select { background: #fff; border: 1px solid #d7b350; font-fami
 	.npc_line a:hover{color: #990099; text-decoration: underline;}
 
 	#killboard{clear:both;}
-	#killboard ul {list-style-type: none;}
+	#killboard ul li {background-image: none; padding: 0px;}
 	#killboard h2 {line-height:28px; margin-bottom:0px;}
 		.sort { display:inline; margin-left:10px; padding:2px;}
 		#human_list{ float:left; width:40%; margin-left:3%; border: 3px solid #001C3A; border-radius: 5px; -moz-border-radius: 5px; padding:10px;}
