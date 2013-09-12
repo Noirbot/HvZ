@@ -89,7 +89,7 @@
 
 		</div>
 		<script type="text/javascript">
-					var options = {valueNames:['name']};
+					var options = {valueNames:['name'], page: 1000};
 					var humanSort = new List('human_list',options);
 				</script>
 		 <div id="zombie_list">
@@ -120,7 +120,7 @@
 				
 		</div>
 		<script type="text/javascript">
-					var options = {valueNames:['name','kills','starve_time']};
+					var options = {valueNames:['name','kills','starve_time'], page: 1000};
 					var zombieSort = new List('zombie_list', options);
 				</script>
 		</form>
