@@ -145,7 +145,7 @@ function beta_print_chat($show_del, $chat_faction, $count){
 		$time = date('D H:i', strtotime($r['timestamp']));
 		$fname=$r['fname'];
 		$lname=$r['lname'];
-		$comment=$r['comment'];
+		$comment=htmlspecialchars_decode($r['comment']);
 		$faction = ($r['oz'] == 1) ? "HUMAN" : $r['faction'];
         $faction_line = strtolower($faction) . "_line";
 
@@ -154,7 +154,7 @@ function beta_print_chat($show_del, $chat_faction, $count){
         if($show_del)
             echo "<td><input type='button' value='X' style='float:left; color:red; border:none; font-size:10px; line-height:10px;' onclick='remove_chat($id, \"$chat_faction\")'></td>";
 
-        echo "<td><a href='../profile/index.php?id=$uid'>$fname $lname</a></td><td>$time</td><td><div class='comments'>$comment</div></td>";
+        echo "<td><a href='../profile/index.php?id=$uid'>$fname $lname</a></td><td>$time</td><td><div class='comments'><p>$comment</p></div></td>";
 
         echo "</tr>\n";
 	}

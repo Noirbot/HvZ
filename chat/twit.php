@@ -6,7 +6,7 @@ $poster_faction = strtoupper(verify($gt_name));
 $audience = isset($_GET['faction']) ? $db->escape_string($_GET['faction']) : 0;
 $comment = isset($_GET['comment']) ? $db->escape_string($_GET['comment']) : 0;
 $comment = urldecode($comment);
-$comment = str_replace( array('<','>'), '', $comment);
+$comment = str_replace( array('<','>'), array('&lt;', '&gt;'), $comment);
 
 
 
