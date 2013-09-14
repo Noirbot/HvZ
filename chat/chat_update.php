@@ -21,7 +21,7 @@ if (strcasecmp($faction, "all") == 0 || strcasecmp($faction, $user_faction) == 0
 			$time = date('D H:i', strtotime($r['timestamp']));
 			$fname=$r['fname'];
 			$lname=$r['lname'];
-			$comment=$r['comment'];
+			$comment=htmlspecialchars_decode($r['comment']);
 			$chat_faction = $r['faction'];
             $faction_line = strtolower($chat_faction) . "_line";
 

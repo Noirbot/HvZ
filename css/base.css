@@ -57,6 +57,7 @@ input, textarea, select { background: #fff; border: 1px solid #d7b350; font-fami
 	}
 	
 	#deathbar {
+		display: none;
 		float: right;
 		width: 175px;
 		border: 3px solid #c5a757;
@@ -106,7 +107,11 @@ input, textarea, select { background: #fff; border: 1px solid #d7b350; font-fami
 	.mta0 {border:3px solid #001C3A; margin:15px 10px; border-radius:5px; -moz-border-radius:5px; padding:10px; overflow:auto; 
 		<!-- [if IE] width:100% -->;}
 	.mta0 p:after{;}	
+<<<<<<< HEAD
 	.mta0 img{ border:2px solid #c5a757; border-radius:5px; -moz-border-radius:5px; float:left; height: 245px; width: 185;}	
+=======
+	.mta0 img{ border:2px solid #c5a757; border-radius:5px; -moz-border-radius:5px; float:left; height: 245px; width: 185px; margin-right: 5px;}	
+>>>>>>> master
 	.mta0 h3{font-size:18px;line-height:18px; margin: 0px; text-align:right; }
 	.mta0 h4{margin:0px; font-size:12px; text-align:right;}
 	.mta0 p{ padding-left:200px;}
@@ -114,7 +119,11 @@ input, textarea, select { background: #fff; border: 1px solid #d7b350; font-fami
 	.mta1 {border:3px solid #001C3A; margin:10px; border-radius:5px; -moz-border-radius:5px; padding:10px; overflow:auto;
 		<!-- [if IE] width:100% -->;}
 	.mta1 p:after{;}	
+<<<<<<< HEAD
 	.mta1 img{ border:2px solid #c5a757; border-radius:5px; -moz-border-radius:5px; float:right; height: 245px; width: 185;}	
+=======
+	.mta1 img{ border:2px solid #c5a757; border-radius:5px; -moz-border-radius:5px; float:right; height: 245px; width: 185px; margin-left: 5px;}	
+>>>>>>> master
 	.mta1 h3{font-size:18px;line-height:18px; margin: 0px;}
 	.mta1 h4{margin:0px; font-size:12px;}
 	.mta1 p{padding-right:220px;}
@@ -212,7 +221,8 @@ input, textarea, select { background: #fff; border: 1px solid #d7b350; font-fami
 	.zombie_line a:hover{color: #339966; text-decoration: underline;}
 	.npc_line a:hover{color: #990099; text-decoration: underline;}
 
-	#killboard{clear:both;}	
+	#killboard{clear:both;}
+	#killboard ul li {background-image: none; padding: 0px;}
 	#killboard h2 {line-height:28px; margin-bottom:0px;}
 		.sort { display:inline; margin-left:10px; padding:2px;}
 		#human_list{ float:left; width:40%; margin-left:3%; border: 3px solid #001C3A; border-radius: 5px; -moz-border-radius: 5px; padding:10px;}

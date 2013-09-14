@@ -145,7 +145,7 @@ function beta_print_chat($show_del, $chat_faction, $count){
 		$time = date('D H:i', strtotime($r['timestamp']));
 		$fname=$r['fname'];
 		$lname=$r['lname'];
-		$comment=$r['comment'];
+		$comment=htmlspecialchars_decode($r['comment']);
 		$faction = ($r['oz'] == 1) ? "HUMAN" : $r['faction'];
         $faction_line = strtolower($faction) . "_line";
 
@@ -154,7 +154,7 @@ function beta_print_chat($show_del, $chat_faction, $count){
         if($show_del)
             echo "<td><input type='button' value='X' style='float:left; color:red; border:none; font-size:10px; line-height:10px;' onclick='remove_chat($id, \"$chat_faction\")'></td>";
 
-        echo "<td><a href='../profile/index.php?id=$uid'>$fname $lname</a></td><td>$time</td><td><div class='comments'>$comment</div></td>";
+        echo "<td><a href='../profile/index.php?id=$uid'>$fname $lname</a></td><td>$time</td><td><div class='comments'><p>$comment</p></div></td>";
 
         echo "</tr>\n";
 	}
@@ -233,6 +233,7 @@ function print_quiz(){
 }
 
 function print_deathbar() {
+	return;
 	global $oz_flushed, $current_game, $db;
     $ozs[] = array();
 	$oz_flushed = is_oz_flushed($current_game);
@@ -253,8 +254,13 @@ function print_deathbar() {
 			ORDER BY k.time DESC
 			LIMIT 5";
 	}
-	
+
 	$db_res = $db->query($query) or die($db->error);
+
+	if ($db_res->num_rows == 0)
+	{
+		return;
+	}
 	
 	if (!$oz_flushed)
 	{
@@ -334,9 +340,15 @@ function print_killboard($faction, $sort_array, $sort_by){
 				
 			echo ("\t<a class='kill_name' href='../profile/index.php?id=" . $r['id'] . "' ><span class='name'>" . $r['fname'] . " " . $r['lname'] . "</span></a>\n");
 			if( $r['gt_name']=='iwiden3' and $gt_name != 'iwiden3')
+<<<<<<< HEAD
 				echo("\t<p class='skinny_lines'>Quieres los logros? Pues ganalos.</p>\n </div>\n");
 			else{
 				echo("\t<p class='skinny_lines'>".$r['slogan']."</p></ul>\n"."</li></div>\n");
+=======
+				echo("\t<p class='skinny_lines'>Quieres los logros? Pues ganalos.</p>\n</li>\n</div>");
+			else{
+				echo("\t<p class='skinny_lines'>".$r['slogan']."</p></li>\n</div>");
+>>>>>>> master
 			}
 		}	
 	}
