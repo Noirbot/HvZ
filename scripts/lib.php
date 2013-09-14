@@ -233,6 +233,7 @@ function print_quiz(){
 }
 
 function print_deathbar() {
+	return;
 	global $oz_flushed, $current_game, $db;
     $ozs[] = array();
 	$oz_flushed = is_oz_flushed($current_game);
@@ -253,8 +254,13 @@ function print_deathbar() {
 			ORDER BY k.time DESC
 			LIMIT 5";
 	}
-	
+
 	$db_res = $db->query($query) or die($db->error);
+
+	if ($db_res->num_rows == 0)
+	{
+		return;
+	}
 	
 	if (!$oz_flushed)
 	{
