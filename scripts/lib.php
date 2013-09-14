@@ -340,15 +340,9 @@ function print_killboard($faction, $sort_array, $sort_by){
 				
 			echo ("\t<a class='kill_name' href='../profile/index.php?id=" . $r['id'] . "' ><span class='name'>" . $r['fname'] . " " . $r['lname'] . "</span></a>\n");
 			if( $r['gt_name']=='iwiden3' and $gt_name != 'iwiden3')
-<<<<<<< HEAD
-				echo("\t<p class='skinny_lines'>Quieres los logros? Pues ganalos.</p>\n </div>\n");
-			else{
-				echo("\t<p class='skinny_lines'>".$r['slogan']."</p></ul>\n"."</li></div>\n");
-=======
 				echo("\t<p class='skinny_lines'>Quieres los logros? Pues ganalos.</p>\n</li>\n</div>");
 			else{
 				echo("\t<p class='skinny_lines'>".$r['slogan']."</p></li>\n</div>");
->>>>>>> master
 			}
 		}	
 	}
