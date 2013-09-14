@@ -44,25 +44,34 @@
 			</p>
 		</div>
 
-       <div class="mta1">
+    <div class="mta1">
 			<img src="images/admins/wes.jpg">
-			<h3>Wes</h3>
+			<h3>Wes Hunt</h3>
             <h4 id="wes"> Co-Head Admin, God of Thunder Admin</h4>
 			<p>
 				Previously, four games, once as OZ. Now, known as Thor, third game as admin, and first game as co-head admin. If you&#x2019;re not having fun, if you&#x2019;re not being smart, if you&#x2019;re trying to break the game, you&#x2019;re doing it wrong. Now go forth, stun and feed until your heart's content!
 			</p>
 		</div>
        
-       <div class="mta0">
+    <div class="mta0">
 			<img src="images/admins/kake.jpg">
 			<h3>Kate Hoyt</h3>
 			<h4 id="kake"> Past-Head Admin, Mission Critique-er, &amp; Overall Oldbie</h4>
 			<p>
-                Hallo! I used to be one of the ones that made the tough decisions, but now I&#x2019;ve returned as a regular admin for my sixth game of HvZ (10th game woot woot!). I do mission and plot writing, and during planning I remind the other admins when their ideas are too complicated. I help coordinate missions and you&#x2019;ll likely see me a lot. Remember to listen when your friendly admin-bot projects loud noises, it tends to be important!	
-           </p>
+          Hallo! I used to be one of the ones that made the tough decisions, but now I&#x2019;ve returned as a regular admin for my sixth game of HvZ (10th game woot woot!). I do mission and plot writing, and during planning I remind the other admins when their ideas are too complicated. I help coordinate missions and you&#x2019;ll likely see me a lot. Remember to listen when your friendly admin-bot projects loud noises, it tends to be important!	
+      </p>
 		</div>
+       
+    <div class="mta1">
+      <img src="images/admins/steph.jpg">
+      <h3>Steph Greear</h3>
+      <h4 id="steph"> Student Advisor, Chief Disciplinarian, Master of the Ban Hammer</h4>
+      <p>
+          I have been an admin for all 9 of the previous games, which means I am one of the rare original admins, and this is my last semester at Tech!
+      </p>
+    </div>
 		
-		<div class="mta1">
+		<div class="mta0">
 			<img src="images/admins/perry.jpg">
 			<h3>Perry Shuman</h3>
 			<h4 id="perry"> Benevolent Web Overlord - Dr. jQuery - Fedora Zombie Founder</h4>
@@ -71,7 +80,7 @@
 			</p>
 		</div>
 		
-		<div class="mta0">
+		<div class="mta1">
 			<img src="images/admins/james.jpg">
 			<h3>James Ray</h3>
 			<h4 id="ray"><span style="color: white">Invisible Admin,</span> God of Mischief Admin</h4>
@@ -80,7 +89,7 @@
             </p>
 		</div>
 
-       <div class="mta1">
+       <div class="mta0">
            <img src="images/admins/kinsey.jpg">
            <h3>Kinsey Canova</h3>
            <h4 id="kinsey"> "Wandering but not lost" Admin</h4>
@@ -89,7 +98,7 @@
            </p>
        </div>
 
-       <div class="mta0">
+       <div class="mta1">
            <img src="images/admins/joe.jpg">
            <h3>Joe Russell</h3>
            <h4 id="joe"> The Walking Apocalypse</h4>
@@ -99,7 +108,7 @@
 
        </div>
        
-       <div class="mta1">
+       <div class="mta0">
            <img src="images/admins/colin.jpg">
            <h3>Colin Sanders</h3>
            <h4 id="colin"> The Colonel - The Doctor</h4>
@@ -108,25 +117,25 @@
            </p>
        </div>
 
-       <div class="mta0">
+       <div class="mta1">
            <img src="images/admins/albert.jpg">
-           <h3>Albert</h3>
+           <h3>Albert Morlan</h3>
            <h4 id="albert"> The Evil Twin</h4>
            <p>
                Greetings!  I have played the game twice before, and am now a first-semester admin.   I hope to enjoy making this game awesome for everybody.  Be warned:  I do have an identical twin brother on campus.  Tag and zombify him, not me.  Happy hunting! 
            </p>
        </div>
 
-       <div class="mta1">
+       <div class="mta0">
            <img src="images/admins/daniel.jpg">
-           <h3>Daniel</h3>
+           <h3>Daniel Valdez</h3>
            <h4 id="daniel"> Nerdfighter Admin</h4>
            <p>
                Hey guys!  I&#x2019;ve played 4 games, 2 as a human and 2 as a zombie (once OZ!).  This is my first time as an admin and I look forward to helping at all the missions I can.  Be safe, go to missions, and remember, Don&#x2019;t Forget to be Awesome!
            </p>
        </div>
 
-       <div class="mta0">
+       <div class="mta1">
            <img src="images/admins/somi.jpg">
            <h3>So-mi Yoon</h3>
            <h4 id="somi"> Newblet Admin(let)</h4>
@@ -135,7 +144,7 @@
            </p>
        </div>
 
-       <div class="mta1">
+       <div class="mta0">
            <img src="images/admins/josh.jpg">
            <h3>Josh Holley</h3>
            <h4 id="josh"> Not Sarcastic At All Admin</h4>
@@ -144,7 +153,7 @@
            </p>
        </div>
 
-       <div class="mta0">
+       <div class="mta1">
            <img src="images/admins/tucker.jpg">
            <h3>Tucker Elliott</h3>
            <h4 id="tucker"> M. Night Shamalamadingdong</h4>
@@ -153,7 +162,7 @@
            </p>
        </div>
        
-		<div class="mta1">
+		<div class="mta0">
 			<img src="images/admins/vince.jpg">
 			<h3>Vince Pedicino</h3>
 			<h4 id = "vince"> HvZ's Favorite Mad Professor</h4>
