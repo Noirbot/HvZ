@@ -148,7 +148,7 @@ ADMIN;
     
                 <em><h3><?php echo $r->fname." ".$r->lname; ?></h3></em>
     
-                <h4>&nbsp;-&nbsp;<?php echo $r->faction; ?></h4>
+                <h4>&nbsp;-&nbsp;<?php if ($r->oz == 1) { echo "HUMAN"; } else {echo $r->faction;} ?></h4>
     
                 <div id="avatar">
                     <?php
@@ -158,7 +158,7 @@ ADMIN;
                     }
                     else
                     {
-                        echo ("<img src='../images/avatars/" . strtolower($r->faction) . '.png\' width="200" />');
+                        echo ("<img src='../images/avatars/" . ($r->oz == 1 ? "human" : strtolower($r->faction)) . '.png\' width="200" />');
                     }
                     ?>
                 </div>
@@ -272,7 +272,7 @@ EDIT;
                         <h4>Slogan</h4>
 				        <p id="slogan">$r->slogan</p>
 DATA;
-                        if ($r->faction == "ZOMBIE" || $r->faction == "DEAD")
+                        if (!($r->oz == 1) && ($r->faction == "ZOMBIE" || $r->faction == "DEAD"))
                         {
                             
                             echo <<<DEAD

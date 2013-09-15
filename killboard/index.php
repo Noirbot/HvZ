@@ -79,7 +79,7 @@
 					<input type="button" value="Name" class="sort" data-sort="name" />
 			</div><br>
 			<?php
-				$res = $db->query("SELECT * FROM users WHERE faction='HUMAN' AND rules_quiz = 1 AND fname != 'Feed' AND lname != 'Feed'");
+				$res = $db->query("SELECT * FROM users WHERE (faction='HUMAN' AND rules_quiz = 1 AND fname != 'Feed' AND lname != 'Feed') OR (oz = 1)");
 				$r = $res->num_rows;
 			?>
 			<h2>Humans (<?php echo $r ?>)</h2>
@@ -105,8 +105,13 @@
 			</div><br>
 
 			<?php
-				$res = $db->query("SELECT * FROM users WHERE faction='ZOMBIE'AND fname != 'Feed' AND lname != 'Feed'");
-				$r = $res->num_rows;
+				$res = $db->query("SELECT * FROM users WHERE faction='ZOMBIE'AND fname != 'Feed' AND lname != 'Feed' AND oz = 0");
+				$oz = $db->query("SELECT * FROM users WHERE oz = 1");
+				if ($oz->num_rows != 0) {
+					$r = $res->num_rows + 1;
+				} else {
+					$r = $res->num_rows;
+				}
 			?>
 			<h2>Zombies (<?php echo $r ?>)</h2>
 				<ul class="list">
