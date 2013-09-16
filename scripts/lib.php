@@ -233,20 +233,19 @@ function print_quiz(){
 }
 
 function print_deathbar() {
-	return;
 	global $oz_flushed, $current_game, $db;
     $ozs[] = array();
 	$oz_flushed = is_oz_flushed($current_game);
 	
 	if($oz_flushed){
-		$query = "SELECT k_u.fname, k_u.lname, v_u.fname, v_u.lname, k.time, k_u.gt_name
-			FROM kills k
-			JOIN users k_u ON k.killer = k_u.gt_name
-			JOIN users v_u ON k.victim = v_u.gt_name 
+		$query = "SELECT k_u.fname AS kfName, k_u.lname AS klName, v_u.fname AS vfName, v_u.lname AS vlName, k.time AS kTime, k_u.gt_name AS kGTName
+			FROM kills AS k
+			JOIN users AS k_u ON k.killer = k_u.gt_name
+			JOIN users AS v_u ON k.victim = v_u.gt_name 
 			ORDER BY k.time DESC
 			LIMIT 5";
 	} else {
-		$query = "SELECT k_u.fname, k_u.lname, v_u.fname, v_u.lname, k.time, k_u.gt_name
+		$query = "SELECT k_u.fname AS kfName, k_u.lname AS klName, v_u.fname AS vfName, v_u.lname AS vlName, k.time AS kTime, k_u.gt_name AS kGTName
 			FROM kills AS k
 			JOIN users AS k_u ON k.killer = k_u.gt_name
 			JOIN users AS v_u ON k.victim = v_u.gt_name 
@@ -259,6 +258,7 @@ function print_deathbar() {
 
 	if ($db_res->num_rows == 0)
 	{
+		echo ('<h2 style="padding-left:5px;">No kills... YET!</h2>');
 		return;
 	}
 	
@@ -278,9 +278,9 @@ function print_deathbar() {
 	
 	while($r = $db_res->fetch_assoc()){
 		echo	"<div class='deathbar_item'>\n".
-				"\t<h1>".$r["v_u.fname"]." ".$r["v_u.lname"]."</h1>\n";
+				"\t<h1>".$r["vfName"]." ".$r["vlName"]."</h1>\n";
 				
-				$time = date('D H:i', strtotime($r["k.time"]));
+				$time = date('D H:i', strtotime($r["kTime"]));
 				echo "<p style='margin:0; padding:0; padding-left:5px; line-height:12px; font-size:12px;'>";
 				echo "&nbsp;&nbsp;&nbsp;<strong>Killed by:</strong> ";
 				if (!$oz_flushed)
@@ -288,7 +288,7 @@ function print_deathbar() {
 					$killed_by_oz = false;
 						foreach($ozs as $oz_id)
 					{
-						if ($r["k_u.gt_name"] == $oz_id)
+						if ($r["kGTName"] == $oz_id)
 						{
 							$killed_by_oz = true;
 						}
@@ -300,12 +300,12 @@ function print_deathbar() {
 					}
 					else
 					{
-						echo $r["k_u.fname"] . " " . $r["k_u.lname"];
+						echo $r["kfName"] . " " . $r["klName"];
 					}
 				}
 				else
 				{
-					echo $r["k_u.fname"] . " " . $r["k_u.lname"];
+					echo $r["kfName"] . " " . $r["klName"];
 				}
 				echo "<br>&nbsp;&nbsp;&nbsp;<strong>On</strong> $time<br>";
 				echo "</p>";
@@ -338,7 +338,7 @@ function print_killboard($faction, $sort_array, $sort_by){
 				echo ("\t<img src='../images/avatars/tiny_human.png' width='50' />\n");
 			}
 				
-			echo ("\t<a class='kill_name' href='../profile/index.php?id=" . $r['id'] . "' ><span class='name'>" . $r['fname'] . " " . $r['lname'] . "</span></a>\n");
+			echo ("\t<a class='kill_name' href='../profile/index.php?id=" . $r['id'] . "' ><span class='first-name'>" . $r['fname'] . " </span><span class='last-name'>" . $r['lname'] . "</span></a>\n");
 			if( $r['gt_name']=='iwiden3' and $gt_name != 'iwiden3')
 				echo("\t<p class='skinny_lines'>Quieres los logros? Pues ganalos.</p>\n</li>\n</div>");
 			else{
@@ -363,9 +363,9 @@ function print_killboard($faction, $sort_array, $sort_by){
 
 		if($oz_flushed){
 			$query = "SELECT k_u.fname AS kFname, k_u.lname AS kLname, v_u.fname AS vFname, v_u.lname AS vLname, v_u.starve_time AS vTime, v_u.kills AS vKills, v_u.slogan AS vSlogan, k.time AS kTime, v_u.gt_name AS vGTname, k_u.gt_name AS kGTname, v_u.id AS vID, k_u.id AS kID, v_u.avatar AS vAvatar
-				FROM kills k
-				JOIN users k_u ON k.killer = k_u.gt_name
-				JOIN users v_u ON k.victim = v_u.gt_name 
+				FROM kills AS k
+				JOIN users AS k_u ON k.killer = k_u.gt_name
+				JOIN users AS v_u ON k.victim = v_u.gt_name 
 				WHERE v_u.fname != 'Feed' AND v_u.lname != 'Feed' 
 				ORDER BY $sort_string";
 		} else {
@@ -402,7 +402,7 @@ function print_killboard($faction, $sort_array, $sort_by){
 				echo ("\t<img src='../images/avatars/tiny_zombie.png' width='50' />\n");
 			}
 					
-			echo	"\t<a class='kill_name' href='../profile/index.php?id=" . $r["vID"] . "' ><span class='name'>".$r["vFname"]." ".$r["vLname"]."</span></a>\n";
+			echo	"\t<a class='kill_name' href='../profile/index.php?id=" . $r["vID"] . "' ><span class='first-name'>".$r["vFname"]." </span><span class='last-name>".$r["vLname"]."</span></a>\n";
 					
 						$time = date('D H:i', strtotime($r["kTime"]));
 						$starve = date('D H:i', strtotime($r["vTime"]));
