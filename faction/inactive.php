@@ -42,7 +42,7 @@
 			}
 			else
 			{
-				echo ("<p>The rules quiz for the Fall game will open on September 10th.</p>");
+				echo ("<p>Due to a lack of bandannas, we have been forced to close sign-ups for the fall game. If you have one and have not signed up, please contact the admin team.</p>");
 			}
 			
 			?>
