@@ -505,6 +505,7 @@ function is_oz_flushed($game) {
 }
 
 function quiz_open($game) {
+	return false;
     global $quiz_open_dates, $quiz_close_dates;
     return (( time() >= strtotime($quiz_open_dates[$game]) && time() < strtotime($quiz_close_dates[$game])) ? true : false);
 }
