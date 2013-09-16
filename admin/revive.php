@@ -47,5 +47,7 @@
         header("Location: $return");
 	}
     else
-        header("Location: http://www.youtube.com/watch?v=oHg5SJYRHA0");
+        $arrayOfEvil = array("http://heyyeyaaeyaaaeyaeyaa.com/", "http://chickenonaraft.com/", "http://bringvictory.com/", "http://www.leekspin.com/");
+        $evil = $arrayOfEvil[rand(0, 3)];
+        header("Location: $evil");
 ?>
