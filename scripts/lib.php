@@ -402,7 +402,7 @@ function print_killboard($faction, $sort_array, $sort_by){
 				echo ("\t<img src='../images/avatars/tiny_zombie.png' width='50' />\n");
 			}
 					
-			echo	"\t<a class='kill_name' href='../profile/index.php?id=" . $r["vID"] . "' ><span class='first-name'>".$r["vFname"]." </span><span class='last-name>".$r["vLname"]."</span></a>\n";
+			echo	"\t<a class='kill_name' href='../profile/index.php?id=" . $r["vID"] . "' ><span class='first-name'>".$r["vFname"]." </span><span class='last-name'>".$r["vLname"]."</span></a>\n";
 					
 						$time = date('D H:i', strtotime($r["kTime"]));
 						$starve = date('D H:i', strtotime($r["vTime"]));
