@@ -100,8 +100,8 @@
 					<input type="button" value="Name"  onclick="document.sort_form.ZSort.value='lname'; document.sort_form.submit()" />
 					<input type="button" value="Kills" onclick="document.sort_form.ZSort.value='kills'; document.sort_form.submit()" /> 
 					<input type="button" value="Hungriest" onclick="document.sort_form.ZSort.value='starve_time'; document.sort_form.submit()"/>-->
-					<input type="button" value="First Name" class="sort" data-sort="name" />
-					<input type="button" value="Last Name" class="sort" data-sort="name" />
+					<input type="button" value="First Name" class="sort" data-sort="first-name" />
+					<input type="button" value="Last Name" class="sort" data-sort="last-name" />
 					<input type="button" value="Kills" class="sort" data-sort="kills" />
 					<input type="button" value="Hungriest" class="sort" data-sort="starve_time" />
 			</div><br>
@@ -122,7 +122,7 @@
 				
 		</div>
 		<script type="text/javascript">
-					var options = {valueNames:['name','kills','starve_time'], page: 1000};
+					var options = {valueNames:['first-name', 'last-name','kills','starve_time'], page: 1000};
 					var zombieSort = new List('zombie_list', options);
 				</script>
 		</form>
