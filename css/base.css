@@ -212,10 +212,13 @@ input, textarea, select { background: #fff; border: 1px solid #d7b350; font-fami
 	.zombie_line a:hover{color: #339966; text-decoration: underline;}
 	.npc_line a:hover{color: #990099; text-decoration: underline;}
 
+	span.starve_num {display: none;}
+
 	#killboard{clear:both;}
 	#killboard ul li {background-image: none; padding: 0px;}
 	#killboard h2 {line-height:28px; margin-bottom:0px;}
 	#killboard input {margin: 0px}
+
 		.sort { display:inline; margin-left:0px; padding:1px;}
 		#human_list{ float:left; width:40%; margin-left:3%; border: 3px solid #001C3A; border-radius: 5px; -moz-border-radius: 5px; padding:10px;}
 		#zombie_list{float:right; width:40%; margin-right:3%;  border: 3px solid #001C3A; border-radius: 5px; -moz-border-radius: 5px; padding:10px;}

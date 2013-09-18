@@ -339,11 +339,7 @@ function print_killboard($faction, $sort_array, $sort_by){
 			}
 				
 			echo ("\t<a class='kill_name' href='../profile/index.php?id=" . $r['id'] . "' ><span class='first-name'>" . $r['fname'] . " </span><span class='last-name'>" . $r['lname'] . "</span></a>\n");
-			if( $r['gt_name']=='iwiden3' and $gt_name != 'iwiden3')
-				echo("\t<p class='skinny_lines'>Quieres los logros? Pues ganalos.</p>\n</li>\n</div>");
-			else{
-				echo("\t<p class='skinny_lines'>".$r['slogan']."</p></li>\n</div>");
-			}
+			echo("\t<p class='skinny_lines'>".$r['slogan']."</p></li>\n</div>");
 		}	
 	}
 	else if($faction == "ZOMBIE"){
@@ -402,7 +398,7 @@ function print_killboard($faction, $sort_array, $sort_by){
 				echo ("\t<img src='../images/avatars/tiny_zombie.png' width='50' />\n");
 			}
 					
-			echo	"\t<a class='kill_name' href='../profile/index.php?id=" . $r["vID"] . "' ><span class='first-name'>".$r["vFname"]." </span><span class='last-name>".$r["vLname"]."</span></a>\n";
+			echo	"\t<a class='kill_name' href='../profile/index.php?id=" . $r["vID"] . "' ><span class='first-name'>".$r["vFname"]." </span><span class='last-name'>".$r["vLname"]."</span></a>\n";
 					
 						$time = date('D H:i', strtotime($r["kTime"]));
 						$starve = date('D H:i', strtotime($r["vTime"]));
@@ -437,7 +433,8 @@ function print_killboard($faction, $sort_array, $sort_by){
 							echo $r["kFname"] . " " . $r["kLname"]."</span>";
 						}
 						echo "<br>&nbsp;&nbsp;&nbsp;<strong>On</strong> $time<br>";
-						echo "&nbsp;&nbsp;&nbsp;<strong>Starves:</strong> <span class='starve_time'>$starve<br></span>";
+						echo "<span style='display:none' class='starve_time' id='starve_num'>".$r["vTime"]."</span>";
+						echo "&nbsp;&nbsp;&nbsp;<strong>Starves:</strong>$starve<br>";
 						echo "</p>";
 						echo "<p>";
 						if( $r["vGTname"]=='twrobel3' and $gt_name != 'twrobel3')
@@ -505,6 +502,7 @@ function is_oz_flushed($game) {
 }
 
 function quiz_open($game) {
+	return false;
     global $quiz_open_dates, $quiz_close_dates;
     return (( time() >= strtotime($quiz_open_dates[$game]) && time() < strtotime($quiz_close_dates[$game])) ? true : false);
 }
