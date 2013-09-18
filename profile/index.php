@@ -371,6 +371,20 @@ CARD;
                     
                     if ($r->faction == "ZOMBIE" && $is_owner)
                     {
+                        echo    "\t\t<ul>\n".
+                                "\t\t\t<li><strong>Missions Completed:</strong>";
+                        echo (" " . $r->early_mission . " Pre-Thursday mission");
+                        if ($r->early_mission != 1)
+                        {
+                            echo ("s");
+                        }
+                        echo (" and " . $r->late_mission . " Post-Thursday mission");
+                        if ($r->late_mission != 1)
+                        {
+                            echo ("s");
+                        }
+                        echo    "</li>\n".
+                                "\t\t</ul>";
                         echo <<<KILL
                         <h2>Report a Kill
                             <input type="button" value="Hide"  onclick="toggle(this, document.getElementById('report_kill'))">
