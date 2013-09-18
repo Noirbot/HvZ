@@ -46,8 +46,9 @@
         
         header("Location: $return");
 	}
-    else
-        $arrayOfEvil = array("http://heyyeyaaeyaaaeyaeyaa.com/", "http://chickenonaraft.com/", "http://bringvictory.com/", "http://www.leekspin.com/");
-        $evil = $arrayOfEvil[rand(0, 3)];
+    else {
+        $arrayOfEvil = array("http://heyyeyaaeyaaaeyaeyaa.com/", "http://chickenonaraft.com/", "http://bringvictory.com/", "http://www.leekspin.com/","http://gprime.net/flash.php/youareapirate","http://www.ooooiiii.com/","http://heeeeeeeey.com/");
+        $evil = $arrayOfEvil[rand(0, count($arrayOfEvil))];
         header("Location: $evil");
+    }
 ?>
