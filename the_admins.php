@@ -129,7 +129,7 @@
        <div class="mta0">
            <img src="images/admins/daniel.jpg">
            <h3>Daniel Valdez</h3>
-           <h4 id="daniel"> Nerdfighter Admin</h4>
+           <h4 id="daniel"> Nerdfighter Admin - Teen Girl Admin</h4>
            <p>
                Hey guys!  I&#x2019;ve played 4 games, 2 as a human and 2 as a zombie (once OZ!).  This is my first time as an admin and I look forward to helping at all the missions I can.  Be safe, go to missions, and remember, Don&#x2019;t Forget to be Awesome!
            </p>
